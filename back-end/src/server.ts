@@ -1,6 +1,8 @@
 import fastify from "fastify";
 import cors from "@fastify/cors"
-import showMessage from "./routes/helloworld";
+import { validatorCompiler, serializerCompiler } from "fastify-type-provider-zod"
+
+import createPhotographer from "./routes/create-photographer";
 
 const app = fastify()
 
@@ -8,7 +10,10 @@ app.register(cors, {
     origin: '*',
 })
 
-app.register(showMessage)
+app.setValidatorCompiler(validatorCompiler)
+app.setSerializerCompiler(serializerCompiler)
+
+app.register(createPhotographer)
 
 app.listen({ port: 8080 }).then(() => {
     console.log(`Server listening on http://localhost:8080`);
