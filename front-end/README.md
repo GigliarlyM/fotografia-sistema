@@ -1,4 +1,8 @@
-# React + Vite
+# Front-end
+
+Iniciar o projeto: `npm install`
+
+## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
