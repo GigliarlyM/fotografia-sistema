@@ -3,19 +3,33 @@ import { readFileSync, writeFileSync } from 'fs';
 import { env } from '../env';
 dotenv.config();
 
-interface EstruturaData {
-    "photographers": Array<Object>
+interface StructuredData {
+    "photographers": Array<Employee>
 }
 
-function readDataModel(): EstruturaData {
+interface Employee {
+    nome: string,
+    apelido: string,
+    dataNascimento: Date,
+    email: string,
+    cpf: string
+}
+
+interface EmployeeAlter {
+    nome: string,
+    apelido: string,
+    email: string
+}
+
+function readDataModel(): StructuredData {
     return JSON.parse(readFileSync(env.DATABASE, 'utf8')) || {}
 }
 
-function createPhotographerModel(newEmployee: any) {
-    const listaPpher = readDataModel()
-    let position = listaPpher["photographers"].push(newEmployee);
+function createPhotographerModel(newEmployee: Employee) {
+    const listPpher = readDataModel()
+    let position = listPpher["photographers"].push(newEmployee);
 
-    writeFileSync(env.DATABASE, JSON.stringify(listaPpher))
+    writeFileSync(env.DATABASE, JSON.stringify(listPpher))
 
     return position
 }
@@ -26,20 +40,32 @@ function readPhotographerModelUnique(idPpher: number) {
     return photographer;
 }
 
-function updatePhotographerModel(idPpher: number, employee: Object) {
-    const listaPpher = readDataModel()
+function updatePhotographerModel(idPpher: number, employee: EmployeeAlter) {
+    const listPpher = readDataModel()
     // TODO colocar um foreach
-    listaPpher.photographers[idPpher - 1] = employee;
+    listPpher.photographers[idPpher - 1].nome = employee.nome;
+    listPpher.photographers[idPpher - 1].email = employee.email;
+    listPpher.photographers[idPpher - 1].apelido = employee.apelido;
 
-    let position = listaPpher.photographers[idPpher - 1]
+    let ppher = listPpher.photographers[idPpher - 1]
 
-    writeFileSync(env.DATABASE, JSON.stringify(listaPpher))
+    writeFileSync(env.DATABASE, JSON.stringify(listPpher))
 
-    return position
+    return ppher
+}
+
+function deletePhotographerModel(idPpher: number) {
+    const list = readDataModel()
+
+    list.photographers.splice(idPpher - 1, 1)
+
+    writeFileSync(env.DATABASE, JSON.stringify(list))
 }
 
 export {
     createPhotographerModel,
     readPhotographerModelUnique,
-    updatePhotographerModel
+    updatePhotographerModel,
+    deletePhotographerModel
 };
+

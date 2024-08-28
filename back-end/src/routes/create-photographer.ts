@@ -10,7 +10,7 @@ export default async function createPhotographer(app: FastifyInstance) {
             body: z.object({
                 nome: z.string().min(3).max(50),
                 apelido: z.string().min(3).max(50),
-                idade: z.number().int().min(15).max(99),
+                dataNascimento: z.coerce.date(),
                 email: z.string().email(),
                 cpf: z.string()
             })
