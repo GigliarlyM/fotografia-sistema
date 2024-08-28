@@ -3,7 +3,7 @@ import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import { updatePhotographerModel } from "../model/crud-photographer";
 
-export default async function createPhotographer(app: FastifyInstance) {
+export default async function putPhotographer(app: FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().put('/photographer/:idPhotographer', {
         schema: {
             params: z.object({
