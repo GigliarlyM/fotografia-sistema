@@ -1,8 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
-import { readFile, readFileSync, writeFileSync } from "fs";
 import { z } from "zod";
-import { env } from "../env";
+import { createPhotographerModel } from "../model/crud-photographer";
 
 
 export default async function createPhotographer(app: FastifyInstance) {
@@ -18,12 +17,8 @@ export default async function createPhotographer(app: FastifyInstance) {
         },
     }, async (request) => {
         const novoFuncionario = request.body
-        const listaPpher = JSON.parse(readFileSync(env.DATABASE, 'utf8'))
-
-        let position = listaPpher["photographers"].push(novoFuncionario)
-        console.log(position);
-
-        writeFileSync(env.DATABASE, JSON.stringify(listaPpher))
+        
+        const position = createPhotographerModel(novoFuncionario)
 
         return { position }
     })
