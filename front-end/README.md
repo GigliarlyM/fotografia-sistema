@@ -1,1 +1,0 @@
-Feito com ReactJS 
