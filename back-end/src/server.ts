@@ -6,6 +6,7 @@ import createPhotographer from "./routes/create-photographer";
 import getPhotographer from "./routes/get-photographer";
 import putPhotographer from "./routes/put-photographer";
 import deletePhotographer from "./routes/delete-photographer";
+import { env } from "./env";
 
 const app = fastify()
 
@@ -16,11 +17,12 @@ app.register(cors, {
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
+// Crud do fotografo
 app.register(createPhotographer)
 app.register(getPhotographer)
 app.register(putPhotographer)
 app.register(deletePhotographer)
 
-app.listen({ port: 8080 }).then(() => {
-    console.log(`Server listening on http://localhost:8080`);
+app.listen({ port: env.PORT }).then(() => {
+    console.log(`Server listening on http://localhost:${env.PORT}`);
 })

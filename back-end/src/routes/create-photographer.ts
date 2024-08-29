@@ -11,7 +11,7 @@ export default async function createPhotographer(app: FastifyInstance) {
                 apelido: z.string().min(3).max(50),
                 dataNascimento: z.coerce.date(),
                 email: z.string().email(),
-                cpf: z.string()
+                cpf: z.string().min(11)
             })
         },
     }, async (request) => {

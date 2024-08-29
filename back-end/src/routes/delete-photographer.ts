@@ -13,8 +13,8 @@ export default async function deletePhotographer(app: FastifyInstance) {
     }, async (request) => {
         const { idPhotographer } = request.params
 
-        const photographer = deletePhotographerModel(idPhotographer)
+        deletePhotographerModel(idPhotographer)
 
-        return { photographer }
+        return { status: 200 }
     })
 }

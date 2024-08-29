@@ -1,1 +1,38 @@
-{"photographers":[{"nome":"Gigliarly Marcelino Gonzaga","apelido":"Giglas","dataNascimento":20,"email":"gigliarlymarcelino@gmail.com","cpf":"11111111111"},{"nome":"Gigliarly Marcelino Gonzaga","apelido":"Giglas","dataNascimento":20,"email":"gigliarlymarcelino@gmail.com","cpf":"8181818181"},{"nome":"Gigliarly Marcelino Gonzaga","apelido":"Giglas","dataNascimento":20,"email":"gigliarlymarcelino@gmail.com","cpf":"99999999"},{"nome":"Gigliarly Marcelino Gonzaga","apelido":"Giglas","dataNascimento":"2004-07-12T00:00:00.000Z","email":"gigliarlymarcelino@gmail.com","cpf":"90909090"}],"cliente":[{"nome":"Douglas","email":"douglas@gmail.com"}]}
+{
+    "photographers": [
+        {
+            "nome": "Gigliarly Marcelino Gonzaga",
+            "apelido": "Giglas",
+            "dataNascimento": 20,
+            "email": "gigliarlymarcelino@gmail.com",
+            "cpf": "11111111111"
+        },
+        {
+            "nome": "Gigliarly Marcelino Gonzaga",
+            "apelido": "Giglas",
+            "dataNascimento": 20,
+            "email": "gigliarlymarcelino@gmail.com",
+            "cpf": "8181818181"
+        },
+        {
+            "nome": "Gigliarly Marcelino Gonzaga",
+            "apelido": "Giglas",
+            "dataNascimento": 20,
+            "email": "gigliarlymarcelino@gmail.com",
+            "cpf": "99999999"
+        },
+        {
+            "nome": "Gigliarly Marcelino Gonzaga",
+            "apelido": "Giglas",
+            "dataNascimento": "2004-07-12T00:00:00.000Z",
+            "email": "gigliarlymarcelino@gmail.com",
+            "cpf": "90909090"
+        }
+    ],
+    "cliente": [
+        {
+            "nome": "Douglas",
+            "email": "douglas@gmail.com"
+        }
+    ]
+}
