@@ -27,6 +27,13 @@ function readDataModel(): StructuredData {
 
 function createPhotographerModel(newEmployee: Employee) {
     const listPpher = readDataModel()
+
+    listPpher.photographers.forEach(element => {
+        if (element.cpf == newEmployee.cpf) {
+            throw new Error("CPF já cadastrado")
+        }
+    });
+
     let position = listPpher["photographers"].push(newEmployee);
 
     writeFileSync(env.DATABASE, JSON.stringify(listPpher))
@@ -35,14 +42,16 @@ function createPhotographerModel(newEmployee: Employee) {
 }
 
 function readPhotographerModelUnique(idPpher: number) {
-    const photographer = readDataModel().photographers[idPpher];
+    const listPpher = readDataModel().photographers;
+    
+    if (idPpher < listPpher.length) throw new Error("Pessoa não existe");
 
-    return photographer;
+    return readDataModel().photographers[idPpher -1];
 }
 
 function updatePhotographerModel(idPpher: number, employee: EmployeeAlter) {
     const listPpher = readDataModel()
-    // TODO colocar um foreach
+
     listPpher.photographers[idPpher - 1].nome = employee.nome;
     listPpher.photographers[idPpher - 1].email = employee.email;
     listPpher.photographers[idPpher - 1].apelido = employee.apelido;

@@ -3,7 +3,6 @@ import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import { createPhotographerModel } from "../model/crud-photographer";
 
-
 export default async function createPhotographer(app: FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().post('/photographer', {
         schema: {
@@ -17,7 +16,7 @@ export default async function createPhotographer(app: FastifyInstance) {
         },
     }, async (request) => {
         const novoFuncionario = request.body
-        
+
         const position = createPhotographerModel(novoFuncionario)
 
         return { position }

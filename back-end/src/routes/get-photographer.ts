@@ -14,7 +14,7 @@ export default async function getPhotographer(app: FastifyInstance) {
     }, async (request) => {
         const { idPpher } = request.params
 
-        const photographer = readPhotographerModelUnique(idPpher - 1)
+        const photographer = readPhotographerModelUnique(idPpher)
 
         return { photographer }
     })

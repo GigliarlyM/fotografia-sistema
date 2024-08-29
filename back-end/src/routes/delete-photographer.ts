@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
-import { deletePhotographerModel, updatePhotographerModel } from "../model/crud-photographer";
+import { deletePhotographerModel } from "../model/crud-photographer";
 
 export default async function deletePhotographer(app: FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().delete('/photographer/:idPhotographer', {
