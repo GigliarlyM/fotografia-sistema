@@ -1,0 +1,11 @@
+form {
+    background-color: rgb(93, 93, 93);
+}
+input {
+    display: block;
+    font-size: large;
+    min-width: 400px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
