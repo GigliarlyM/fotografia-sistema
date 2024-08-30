@@ -4,6 +4,7 @@ import { z } from "zod";
 import { updatePhotographerModel } from "../model/crud-photographer";
 
 export default async function putPhotographer(app: FastifyInstance) {
+    //@Todo: mudar o IdPppher
     app.withTypeProvider<ZodTypeProvider>().put('/photographer/:idPhotographer', {
         schema: {
             params: z.object({

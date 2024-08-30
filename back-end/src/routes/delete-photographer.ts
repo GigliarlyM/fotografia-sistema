@@ -4,6 +4,7 @@ import { z } from "zod";
 import { deletePhotographerModel } from "../model/crud-photographer";
 
 export default async function deletePhotographer(app: FastifyInstance) {
+    //@Todo: mudar o IdPppher
     app.withTypeProvider<ZodTypeProvider>().delete('/photographer/:idPhotographer', {
         schema: {
             params: z.object({
