@@ -5,16 +5,16 @@ import { deletePhotographerModel } from "../model/crud-photographer";
 
 export default async function deletePhotographer(app: FastifyInstance) {
     //@Todo: mudar o IdPppher
-    app.withTypeProvider<ZodTypeProvider>().delete('/photographer/:idPhotographer', {
+    app.withTypeProvider<ZodTypeProvider>().delete('/photographer/:cpfPhotographer', {
         schema: {
             params: z.object({
-                idPhotographer: z.coerce.number()
+                cpfPhotographer: z.string()
             })
         },
     }, async (request) => {
-        const { idPhotographer } = request.params
+        const { cpfPhotographer } = request.params
 
-        deletePhotographerModel(idPhotographer)
+        deletePhotographerModel(cpfPhotographer)
 
         return { status: 200 }
     })

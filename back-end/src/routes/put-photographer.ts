@@ -5,10 +5,10 @@ import { updatePhotographerModel } from "../model/crud-photographer";
 
 export default async function putPhotographer(app: FastifyInstance) {
     //@Todo: mudar o IdPppher
-    app.withTypeProvider<ZodTypeProvider>().put('/photographer/:idPhotographer', {
+    app.withTypeProvider<ZodTypeProvider>().put('/photographer/:cpfPhotographer', {
         schema: {
             params: z.object({
-                idPhotographer: z.coerce.number()
+                cpfPhotographer: z.string()
             }),
             body: z.object({
                 nome: z.string().min(3).max(50),
@@ -17,10 +17,10 @@ export default async function putPhotographer(app: FastifyInstance) {
             })
         },
     }, async (request) => {
-        const { idPhotographer } = request.params
+        const { cpfPhotographer } = request.params
         const { nome, apelido, email } = request.body
 
-        const photographer = updatePhotographerModel(idPhotographer, {nome, apelido, email})
+        const photographer = updatePhotographerModel(cpfPhotographer, {nome, apelido, email})
 
         return { photographer }
     })

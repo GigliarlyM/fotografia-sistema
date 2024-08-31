@@ -29,10 +29,20 @@
             "cpf": "90909090"
         }
     ],
-    "cliente": [
+    "clients": [
         {
             "nome": "Douglas",
-            "email": "douglas@gmail.com"
+            "apelido": "Doug",
+            "email": "douglas@gmail.com",
+            "cpf": "123456789"
+        }
+    ],
+    "photos": [
+        {
+            "id": 1,
+            "url": "http://jalfakjfflsj",
+            "cpfPhotographer": "90909090",
+            "price": 5
         }
     ]
 }

@@ -1,19 +1,4 @@
-import dotenv from 'dotenv';
-import { readFileSync, writeFileSync } from 'fs';
-import { env } from '../env';
-dotenv.config();
-
-interface StructuredData {
-    "photographers": Array<Employee>
-}
-
-interface Employee {
-    nome: string,
-    apelido: string,
-    dataNascimento: Date,
-    email: string,
-    cpf: string
-}
+import { Employee, readDataModel, writeDataModel } from './func-data';
 
 interface EmployeeAlter {
     nome: string,
@@ -21,60 +6,63 @@ interface EmployeeAlter {
     email: string
 }
 
-function readDataModel(): StructuredData {
-    return JSON.parse(readFileSync(env.DATABASE, 'utf8')) || {}
-}
-
 function createPhotographerModel(newEmployee: Employee) {
-    const listPpher = readDataModel()
+    const listAll = readDataModel()
 
-    listPpher.photographers.forEach(element => {
+    listAll.photographers.forEach(element => {
         if (element.cpf == newEmployee.cpf) {
             throw new Error("CPF já cadastrado")
         }
     });
 
-    let position = listPpher["photographers"].push(newEmployee);
+    let position = listAll["photographers"].push(newEmployee);
 
-    writeFileSync(env.DATABASE, JSON.stringify(listPpher))
+    writeDataModel(listAll)
 
     return position
 }
 
-function readPhotographerModelUnique(idPpher: number) {
+function readPhotographerModelUnique(cpfPpher: string) {
     const listPpher = readDataModel().photographers;
     
-    if (idPpher < listPpher.length) throw new Error("Pessoa não existe");
+    const photographer = listPpher.find(element => element.cpf == cpfPpher)
 
-    return readDataModel().photographers[idPpher -1];
+    if (photographer == undefined) throw new Error("Pessoa não existe")
+
+    return photographer;
 }
 
-function updatePhotographerModel(idPpher: number, employee: EmployeeAlter) {
-    const listPpher = readDataModel()
+function updatePhotographerModel(cpfPpher: string, employee: EmployeeAlter) {
+    const listAll = readDataModel()
 
-    listPpher.photographers[idPpher - 1].nome = employee.nome;
-    listPpher.photographers[idPpher - 1].email = employee.email;
-    listPpher.photographers[idPpher - 1].apelido = employee.apelido;
+    const photographer = readPhotographerModelUnique(cpfPpher)
+    const position = listAll.photographers.indexOf(photographer)
 
-    let ppher = listPpher.photographers[idPpher - 1]
+    photographer.nome = employee.nome
+    photographer.email = employee.email
+    photographer.apelido = employee.apelido
 
-    writeFileSync(env.DATABASE, JSON.stringify(listPpher))
+    listAll.photographers[position] = photographer
 
-    return ppher
+    writeDataModel(listAll)
+
+    return photographer
 }
 
-function deletePhotographerModel(idPpher: number) {
+function deletePhotographerModel(cpfPpher: string) {
     const list = readDataModel()
 
-    list.photographers.splice(idPpher - 1, 1)
+    const photographer = readPhotographerModelUnique(cpfPpher)
+    const position = list.photographers.indexOf(photographer)
 
-    writeFileSync(env.DATABASE, JSON.stringify(list))
+    list.photographers.splice(position, 1)
+
+    writeDataModel(list)
+    return position
 }
 
 export {
-    createPhotographerModel,
-    readPhotographerModelUnique,
-    updatePhotographerModel,
-    deletePhotographerModel
+    createPhotographerModel, deletePhotographerModel, readPhotographerModelUnique,
+    updatePhotographerModel
 };
 

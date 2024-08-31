@@ -1,0 +1,68 @@
+import { Client, readDataModel, writeDataModel } from './func-data';
+
+interface ClientAlter {
+    apelido: string,
+    email: string
+}
+
+function createClientModel(newClient: Client) {
+    const listAll = readDataModel()
+
+    listAll.clients.forEach(element => {
+        if (element.cpf == newClient.cpf) {
+            throw new Error("CPF já cadastrado")
+        }
+    });
+
+    let position = listAll.clients.push(newClient);
+
+    writeDataModel(listAll)
+
+    return position
+}
+
+function readClientModelUnique(cpfClient: string) {
+    const listClient = readDataModel().clients;
+
+    const Client = listClient.find(element => element.cpf == cpfClient)
+
+    if (Client == undefined) throw new Error("Pessoa não existe")
+
+    return Client;
+}
+
+function updateClientModel(cpfClient: string, clientAlt: ClientAlter) {
+    const listAll = readDataModel()
+
+    const client = readClientModelUnique(cpfClient)
+    const position = listAll.clients.indexOf(client)
+
+    client.email = clientAlt.email
+    client.apelido = clientAlt.apelido
+
+    listAll.clients[position] = client
+
+    writeDataModel(listAll)
+
+    return client
+}
+
+function deleteClientModel(cpfClient: string) {
+    const listAll = readDataModel()
+
+    const Client = readClientModelUnique(cpfClient)
+    const position = listAll.clients.indexOf(Client)
+
+    listAll.clients.splice(position, 1)
+
+    writeDataModel(listAll)
+    return position
+}
+
+export {
+    createClientModel,
+    readClientModelUnique,
+    updateClientModel,
+    deleteClientModel
+};
+
