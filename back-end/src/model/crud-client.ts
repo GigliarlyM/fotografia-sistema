@@ -56,7 +56,6 @@ function deleteClientModel(cpfClient: string) {
     listAll.clients.splice(position, 1)
 
     writeDataModel(listAll)
-    return position
 }
 
 export {

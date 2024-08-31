@@ -18,7 +18,8 @@ interface Photo {
     id: number,
     url: string,
     cpfPhotographer: string,
-    price: number
+    price: number,
+    promo: number // Valor em Decimal que sera aplicado em price
 }
 
 interface Employee {

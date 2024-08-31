@@ -11,6 +11,10 @@ import createClient from "./routes/create-client";
 import getClient from "./routes/get-client";
 import putClient from "./routes/put-client";
 import deleteClient from "./routes/delete-client";
+import createPhoto from "./routes/create-photo";
+import getPhoto from "./routes/get-photo";
+import postPromoPhoto from "./routes/post-promo-photo";
+import deletePhoto from "./routes/delete-photo";
 
 const app = fastify()
 
@@ -32,6 +36,12 @@ app.register(createClient)
 app.register(getClient)
 app.register(putClient)
 app.register(deleteClient)
+
+// CRUD do servico
+app.register(createPhoto)
+app.register(getPhoto)
+app.register(postPromoPhoto)
+app.register(deletePhoto)
 
 app.listen({ port: env.PORT }).then(() => {
     console.log(`Server listening on http://localhost:${env.PORT}`);

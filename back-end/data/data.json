@@ -42,7 +42,8 @@
             "id": 1,
             "url": "http://jalfakjfflsj",
             "cpfPhotographer": "90909090",
-            "price": 5
+            "price": 5,
+            "promo": 0.2
         }
     ]
 }

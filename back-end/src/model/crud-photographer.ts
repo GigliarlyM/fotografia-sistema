@@ -58,7 +58,6 @@ function deletePhotographerModel(cpfPpher: string) {
     list.photographers.splice(position, 1)
 
     writeDataModel(list)
-    return position
 }
 
 export {
