@@ -1,7 +1,6 @@
 import { Employee, readDataModel, writeDataModel } from './func-data';
 
 interface EmployeeAlter {
-    nome: string,
     apelido: string,
     email: string
 }
@@ -38,7 +37,6 @@ function updatePhotographerModel(cpfPpher: string, employee: EmployeeAlter) {
     const photographer = readPhotographerModelUnique(cpfPpher)
     const position = listAll.photographers.indexOf(photographer)
 
-    photographer.nome = employee.nome
     photographer.email = employee.email
     photographer.apelido = employee.apelido
 

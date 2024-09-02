@@ -19,18 +19,18 @@ function LogIn() {
             const reponse = await axios.post(pathApi, { apelido, email })
             console.log(reponse.data.photographer)
 
-            if (reponse.data) {
+            if (reponse.data.photographer) {
                 setValid(true)
-            } else {
-                setValid(false)
-            }
+                sessionStorage.setItem('cpf_id', reponse.data.photographer.cpf)
+                sessionStorage.setItem('name_photographer', reponse.data.photographer.nome)
+            } 
         } catch (error) {
             console.error(error)
         }
     }
 
     if (valid) {
-        navigate('photographer')
+        navigate('/photographer')
     }
 
     return (

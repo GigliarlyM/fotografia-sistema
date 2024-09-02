@@ -11,16 +11,15 @@ export default async function putPhotographer(app: FastifyInstance) {
                 cpfPhotographer: z.string()
             }),
             body: z.object({
-                nome: z.string().min(3).max(50),
                 apelido: z.string().min(3).max(50),
                 email: z.string().email(),
             })
         },
     }, async (request) => {
         const { cpfPhotographer } = request.params
-        const { nome, apelido, email } = request.body
+        const {  apelido, email } = request.body
 
-        const photographer = updatePhotographerModel(cpfPhotographer, {nome, apelido, email})
+        const photographer = updatePhotographerModel(cpfPhotographer, {apelido, email})
 
         return { photographer }
     })
