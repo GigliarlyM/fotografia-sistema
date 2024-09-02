@@ -30,7 +30,7 @@ function LogIn() {
     }
 
     if (valid) {
-        navigate('/')
+        navigate('photographer')
     }
 
     return (
