@@ -15,6 +15,8 @@ import createPhoto from "./routes/create-photo";
 import getPhoto from "./routes/get-photo";
 import postPromoPhoto from "./routes/post-promo-photo";
 import deletePhoto from "./routes/delete-photo";
+import validationClient from "./routes/validation-client";
+import validationPhotographer from "./routes/validation-photographer";
 
 const app = fastify()
 
@@ -42,6 +44,10 @@ app.register(createPhoto)
 app.register(getPhoto)
 app.register(postPromoPhoto)
 app.register(deletePhoto)
+
+// Validation
+app.register(validationClient)
+app.register(validationPhotographer)
 
 app.listen({ port: env.PORT }).then(() => {
     console.log(`Server listening on http://localhost:${env.PORT}`);

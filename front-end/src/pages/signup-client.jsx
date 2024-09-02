@@ -22,7 +22,7 @@ function CadastroClient() {
                 </button>
                 <button
                     id="fotografoTab"
-                    className={activeForm === 'fotografo' ? '' : 'active'}
+                    className={activeForm === 'fotografo' ? 'active' : ''}
                     onClick={() => showForm('fotografo')}
                 >
                     Fotógrafo

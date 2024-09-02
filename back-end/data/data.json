@@ -27,6 +27,20 @@
             "dataNascimento": "2004-07-12T00:00:00.000Z",
             "email": "gigliarlymarcelino@gmail.com",
             "cpf": "90909090"
+        },
+        {
+            "nome": "Jose",
+            "apelido": "josefi",
+            "dataNascimento": "2000-08-10T00:00:00.000Z",
+            "email": "jose@gmail.com",
+            "cpf": "12345678901"
+        },
+        {
+            "nome": "Jose",
+            "apelido": "josefi",
+            "dataNascimento": "2000-08-10T00:00:00.000Z",
+            "email": "jose@gmail.com",
+            "cpf": "12345678981"
         }
     ],
     "clients": [
