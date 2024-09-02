@@ -13,10 +13,10 @@ function LogIn() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        
+
         console.log(`Apelido: ${apelido}, Email: ${email}`)
         try {
-            const reponse = await axios.post(pathApi, {apelido, email})
+            const reponse = await axios.post(pathApi, { apelido, email })
             console.log(reponse.data.photographer)
 
             if (reponse.data) {
@@ -27,16 +27,16 @@ function LogIn() {
         } catch (error) {
             console.error(error)
         }
+    }
 
-        if(valid) {
-            navigate('/')
-        }
+    if (valid) {
+        navigate('/')
     }
 
     return (
         <div >
             <input type="text" required placeholder="Apelido" value={apelido} onChange={e => setApelido(e.target.value)} />
-            <input type="email" required  placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}/>
+            <input type="email" required placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
             <button onClick={handleSubmit}>Entrar</button>
         </div>
     )
