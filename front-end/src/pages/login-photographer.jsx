@@ -8,7 +8,7 @@ function LogIn() {
     const [email, setEmail] = useState('')
     const [valid, setValid] = useState(false)
     const navigate = useNavigate()
-    const pathApi = 'http://localhost:8080/photographers/valid'
+    const pathApi = 'http://localhost:8080/photographers/validation'
 
     const handleSubmit = async (e) => {
         e.preventDefault()
