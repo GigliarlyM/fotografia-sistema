@@ -2,12 +2,13 @@ import { useState } from "react"
 import axios from "axios"
 
 export default function CreatePhoto() {
+    const cpfPhotographer = sessionStorage.getItem("cpf_id")
     const [form, setForm] = useState({ title: '', price: '', link: '' })
     const pathApi = "http://localhost:8080/photo"
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.post(pathApi, { title: form.title, price: form.price, url: form.link })
+            const response = await axios.post(pathApi + `/${cpfPhotographer}`, { price: Number(form.price), url: form.link })
             console.log(response)
         } catch (error) {
             console.error(error)

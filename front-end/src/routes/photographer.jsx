@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import AlterDataPhotographer from "../pages/alter-photographer";
 import CreatePhoto from "../pages/create-photo";
-import GetPhoto from "../pages/get-photo";
+import { GetPhoto } from "../pages/get-photo";
 import PerfilPhotographer from "../pages/perfil-photographer";
 import LogIn from "../pages/login-photographer";
 

@@ -1,5 +1,5 @@
 import { readPhotographerModelUnique } from "./crud-photographer"
-import { Photo, readDataModel } from "./func-data"
+import { Photo, readDataModel, writeDataModel } from "./func-data"
 
 interface PhotoSimple {
     url: string,
@@ -11,20 +11,27 @@ function createPhotoModel(cpfPhotographer: string, photo: PhotoSimple) {
 
     readPhotographerModelUnique(cpfPhotographer)
 
-    if (listAll.photos.find(element => element.url === photo.url) != undefined)
+    if (listAll.photos.find(element => element.url === photo.url))
         throw new Error(`Existe uma foto com essa url`);
 
-    return listAll.photos.push({
+    const position = listAll.photos.push({
         url: photo.url,
         price: photo.price,
         cpfPhotographer,
         id: listAll.photos.length + 1,
         promo: 0
     })
+    writeDataModel(listAll)
+
+    return position
 }
 
 function getPhotoModel(cpfPhotographer: string) {
     return readDataModel().photos.filter(element => element.cpfPhotographer == cpfPhotographer)
+}
+
+function getPhotoAllModel() {
+    return readDataModel().photos
 }
 
 function deletePhotoModel(idPhoto: number) {
@@ -50,5 +57,6 @@ export {
     createPhotoModel,
     getPhotoModel,
     deletePhotoModel,
-    aplyPromoModel
+    aplyPromoModel,
+    getPhotoAllModel
 }

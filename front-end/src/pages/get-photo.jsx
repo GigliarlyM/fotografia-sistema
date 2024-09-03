@@ -1,28 +1,63 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 
-export default function GetPhoto() {
+import axios from "axios"
+import { useEffect, useState } from "react"
+
+function GetPhoto() {
+    const cpfPhotographer = sessionStorage.getItem("cpf_id")
+    const [photos, setPhotos] = useState([
+        {
+            url: "",
+            price: "",
+            title: "",
+        }
+    ])
+    const [isLoading, setIsLoanding] = useState(false)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setIsLoanding(true)
+            try {
+                const response = await axios.get(`http://localhost:8080/photo/${cpfPhotographer}`)
+
+                console.log(response.data.photos)
+
+                setPhotos(response.data.photos)
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setIsLoanding(false)
+            }
+        }
+
+        fetchData()
+    }, [cpfPhotographer])
+
+    if (isLoading) {
+        return <div>Carregando fotos</div>
+    }
+
     return (
         <>
-            <div>Photos</div>
-            <Photo
-                title="Yuji"
-                url="https://ovicio.com.br/wp-content/uploads/2021/12/20211208-cropped-20211208-e273e9c0-66e2-48f9-aea1-e30872da8fdf.jpeg"
-                price="12" />
-            
-            <Photo
-                title="Yuji Itadori"
-                url="https://ovicio.com.br/wp-content/uploads/2021/12/20211208-cropped-20211208-e273e9c0-66e2-48f9-aea1-e30872da8fdf.jpeg"
-                price="12" />
+            <h1>Photos</h1>
+            {photos.map(photo => (
+                <Photo url={photo.url} price={photo.price} />
+            ))}
         </>
     )
 }
 
-function Photo({ title, url, price }) {
+function Photo({ url, price }) {
     return (
         <card>
-            <h1>{title}</h1>
-            <img src={url} width={200} alt={title} />
+            <img src={url} width={200} />
             <p>R$ {price}</p>
         </card>
     )
+}
+
+export {
+    Photo,
+    GetPhoto
 }

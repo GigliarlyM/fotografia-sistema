@@ -17,6 +17,7 @@ import postPromoPhoto from "./routes/post-promo-photo";
 import deletePhoto from "./routes/delete-photo";
 import validationClient from "./routes/validation-client";
 import validationPhotographer from "./routes/validation-photographer";
+import getPhotoAll from "./routes/get-photo-all";
 
 const app = fastify()
 
@@ -44,6 +45,7 @@ app.register(createPhoto)
 app.register(getPhoto)
 app.register(postPromoPhoto)
 app.register(deletePhoto)
+app.register(getPhotoAll)
 
 // Validation
 app.register(validationClient)
