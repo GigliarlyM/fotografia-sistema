@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '../styles/estiloCadastro.css';
 
 
 function CadastroClient() {
