@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 
-function CadastroClient() {
+export default function CadastroGeral() {
     const [activeForm, setActiveForm] = useState('cliente');
 
     const showForm = (form) => {
@@ -70,5 +70,3 @@ function CadastroClient() {
         </div>
     );
 }
-
-export default CadastroClient;
