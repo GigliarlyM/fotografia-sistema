@@ -1,6 +1,7 @@
 Feito com Fastify 
 
 execute primeiro : `npm install`
+Executar projeto: `npm run dev`
 
 ## Rotas possiveis do sistema
 * /photographer
