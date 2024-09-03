@@ -11,8 +11,9 @@ export default function AlterDataPhotographer() {
         const dataAlt = {
             apelido,
             email,
-            cpf: '12345678901'
+            cpf: sessionStorage.getItem(`cpf_id`)
         }
+        console.log(dataAlt)
 
         try {
             const response = await axios.put(
@@ -27,7 +28,7 @@ export default function AlterDataPhotographer() {
     }
 
     return (
-        <div>
+        <div className="form">
             <input type="text" placeholder="Apelido" value={apelido} onChange={e => setApelido(e.target.value)}/>
             <input type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}/>
             <button onClick={handleSubmit}>Atualizar dados</button>
