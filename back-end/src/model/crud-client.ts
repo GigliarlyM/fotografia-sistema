@@ -24,11 +24,11 @@ function createClientModel(newClient: Client) {
 function readClientModelUnique(cpfClient: string) {
     const listClient = readDataModel().clients;
 
-    const Client = listClient.find(element => element.cpf == cpfClient)
+    const client = listClient.find(element => element.cpf == cpfClient)
 
-    if (Client == undefined) throw new Error("Pessoa não existe")
+    if (client == undefined) throw new Error("Pessoa não existe")
 
-    return Client;
+    return client;
 }
 
 function updateClientModel(cpfClient: string, clientAlt: ClientAlter) {
@@ -50,8 +50,8 @@ function updateClientModel(cpfClient: string, clientAlt: ClientAlter) {
 function deleteClientModel(cpfClient: string) {
     const listAll = readDataModel()
 
-    const Client = readClientModelUnique(cpfClient)
-    const position = listAll.clients.indexOf(Client)
+    const client = readClientModelUnique(cpfClient)
+    const position = listAll.clients.indexOf(client)
 
     listAll.clients.splice(position, 1)
 
