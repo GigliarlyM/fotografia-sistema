@@ -19,8 +19,8 @@ export default function LoginClient() {
 
             if (reponse.data.client) {
                 setValid(true)
-                sessionStorage.setItem('cpf_id', reponse.data.client.cpf)
-                sessionStorage.setItem('name_photographer', reponse.data.client.nome)
+                //sessionStorage.setItem('cpf_id', reponse.data.client.cpf)
+                //sessionStorage.setItem('name_photographer', reponse.data.client.nome)
             } 
         } catch (error) {
             console.error(error)
