@@ -4,7 +4,7 @@ import "../styles/form.css"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function LogIn() {
+export default function LoginPhotographer() {
     const [apelido, setApelido] = useState('')
     const [email, setEmail] = useState('')
     const [valid, setValid] = useState(false)
@@ -35,11 +35,14 @@ function LogIn() {
 
     return (
         <div className="form">
+            {() => {
+                if (sessionStorage.getItem('cpf_id')) {
+                    navigate('/photographer')
+                }
+            }}
             <input type="text" required placeholder="Apelido" value={apelido} onChange={e => setApelido(e.target.value)} />
             <input type="email" required placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
             <button onClick={handleSubmit}>Entrar</button>
         </div>
     )
 }
-
-export default LogIn;

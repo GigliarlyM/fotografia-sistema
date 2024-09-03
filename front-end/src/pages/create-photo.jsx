@@ -4,7 +4,7 @@ import axios from "axios"
 export default function CreatePhoto() {
     const [form, setForm] = useState({ title: '', price: '', link: '' })
     const pathApi = "http://localhost:8080/photo"
-    
+
     const handleSubmit = async () => {
         try {
             const response = await axios.post(pathApi, { title: form.title, price: form.price, url: form.link })
