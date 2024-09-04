@@ -1,3 +1,4 @@
+import { throwDeprecation } from "process"
 import { readPhotographerModelUnique } from "./crud-photographer"
 import { Photo, readDataModel, writeDataModel } from "./func-data"
 
@@ -34,10 +35,17 @@ function getPhotoAllModel() {
     return readDataModel().photos
 }
 
-function deletePhotoModel(idPhoto: number) {
+function deletePhotoModel(idPhoto: number, cpfPhotographer: string) {
     const listAll = readDataModel()
-    const index = listAll.photos.findIndex(element => element.id === idPhoto)
+    const index = listAll.photos
+        .filter(photo => photo.cpfPhotographer == cpfPhotographer)
+        .findIndex(element => element.id === idPhoto)
+    
+    if (index == -1) throw new Error("Foto não encontrada")
+
     listAll.photos.splice(index, 1)
+
+    writeDataModel(listAll)
 }
 
 function aplyPromoModel(idPhoto: number, priceAlt: number) {

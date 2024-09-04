@@ -4,16 +4,17 @@ import { z } from "zod";
 import { deletePhotoModel } from "../model/crud-service";
 
 export default async function deletePhoto(app: FastifyInstance) {
-    app.withTypeProvider<ZodTypeProvider>().delete('/photo/:idPhoto', {
+    app.withTypeProvider<ZodTypeProvider>().delete('/photo/:cpfPhotographer/:idPhoto', {
         schema: {
             params: z.object({
-                idPhoto: z.coerce.number()
+                idPhoto: z.coerce.number(),
+                cpfPhotographer: z.string()
             })
         },
     }, async (request) => {
-        const { idPhoto } = request.params
+        const { idPhoto, cpfPhotographer } = request.params
 
-        const photos = deletePhotoModel(idPhoto)
+        const photos = deletePhotoModel(idPhoto, cpfPhotographer)
 
         return { photos }
     })
