@@ -9,7 +9,7 @@ function GetPhoto() {
     const [photos, setPhotos] = useState([
         {
             url: "",
-            price: "",
+            price: 0,
             title: "",
         }
     ])

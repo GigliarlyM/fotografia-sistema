@@ -32,7 +32,16 @@ function getPhotoModel(cpfPhotographer: string) {
 }
 
 function getPhotoAllModel() {
-    return readDataModel().photos
+    const listPhotos = readDataModel().photos
+    const ObjetoEnvioApelido = {
+        id: 0,
+        url: "",
+        criador: "",
+        price: 0
+    }
+
+    return {}
+    
 }
 
 function deletePhotoModel(idPhoto: number, cpfPhotographer: string) {

@@ -49,6 +49,7 @@ export default function PerfilPhotographer() {
             <p>{photographer.cpf}</p>
             <button onClick={() => navigate("/photographer/photo/create")}>Adicionar foto</button>
             <button onClick={() => navigate("/photographer/alter")}>Alterar credenciais</button>
+            <button onClick={() => navigate("/photographer/photo")}>Exibir fotos</button>
         </div>
     )
 }

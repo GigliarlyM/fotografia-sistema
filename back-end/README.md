@@ -66,6 +66,7 @@ Executar projeto: `npm run dev`
 * /client/validation
     * post
         * { email: string }
+        
 * /photographer/validation
     * post
         * { email: string }

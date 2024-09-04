@@ -5,12 +5,29 @@ import { Photo } from "./get-photo";
 
 export default function Home() {
     const navigate = useNavigate()
-    const [photos, setPhotos] = useState([
-        {
-            url: "",
-            price: ""
-        }
-    ])
+    
+    return (
+        <>
+            <div>
+                <button onClick={() => navigate("login/photographer")}>Entrar como fotografo</button>
+                <button onClick={() => navigate("login/client")}>Entrar como Cliente</button>
+                <button onClick={() => navigate("signup")}>Cadastrar</button>
+                <button onClick={() => navigate("cadastro-servico")}>Cadastrar serviço</button>
+            </div>
+            <div>
+                <h1>Sobre a Fotografia Sistema</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel libero vel arcu rhoncus sollicitudin ac vitae metus. Sed tincidunt, arcu vel dignissim bibendum, arcu justo gravida lacus, non porttitor felis odio vel velit. Donec laoreet, erat id consectetur faucibus, mauris dui consectetur ligula, non sagittis arcu neque non ex.</p>
+            </div>
+            <div>
+                <RenderPhotos />
+            </div>
+        </>
+    )
+}
+
+function RenderPhotos () {
+    // @TODO: Fazer um tipo de avaliação; E retonar o Apelido do ser humano que postou
+    const [photos, setPhotos] = useState([ ])
     const [isLoading, setIsLoanding] = useState(false)
 
     useEffect(() => {
@@ -38,21 +55,9 @@ export default function Home() {
 
     return (
         <>
-            <div>
-                <button onClick={() => navigate("login/photographer")}>Entrar como fotografo</button>
-                <button onClick={() => navigate("login/client")}>Entrar como Cliente</button>
-                <button onClick={() => navigate("signup")}>Cadastrar</button>
-                <button onClick={() => navigate("cadastro-servico")}>Cadastrar serviço</button>
-            </div>
-            <div>
-                <h1>Sobre a Fotografia Sistema</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel libero vel arcu rhoncus sollicitudin ac vitae metus. Sed tincidunt, arcu vel dignissim bibendum, arcu justo gravida lacus, non porttitor felis odio vel velit. Donec laoreet, erat id consectetur faucibus, mauris dui consectetur ligula, non sagittis arcu neque non ex.</p>
-            </div>
-            <div>
-                {photos.map(photo => {
-                    <Photo url={photo.url} price={photo.price} />
-                })}
-            </div>
+            {photos.map(photo => (
+                <Photo url={photo.url} price={photo.price} />
+            ))}
         </>
     )
 }
