@@ -9,9 +9,9 @@ function createPhotographerModel(newEmployee: Employee) {
     const listAll = readDataModel()
 
     listAll.photographers.forEach(element => {
-        if (element.cpf == newEmployee.cpf) {
-            throw new Error("CPF já cadastrado")
-        }
+        if (element.apelido == newEmployee.apelido) throw new Error("Apelido já cadastrado no sistema")
+        
+        if (element.cpf == newEmployee.cpf) throw new Error("CPF já cadastrado")
     });
 
     let position = listAll["photographers"].push(newEmployee);
@@ -23,7 +23,7 @@ function createPhotographerModel(newEmployee: Employee) {
 
 function readPhotographerModelUnique(cpfPpher: string) {
     const listPpher = readDataModel().photographers;
-    
+
     const photographer = listPpher.find(element => element.cpf == cpfPpher)
 
     if (photographer == undefined) throw new Error("Pessoa não existe")
