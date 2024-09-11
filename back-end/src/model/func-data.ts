@@ -27,7 +27,8 @@ interface Employee {
     apelido: string,
     dataNascimento: Date,
     email: string,
-    cpf: string
+    cpf: string,
+    role: string
 }
 
 function readDataModel(): StructuredData {

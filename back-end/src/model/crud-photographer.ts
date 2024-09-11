@@ -14,6 +14,8 @@ function createPhotographerModel(newEmployee: Employee) {
         if (element.cpf == newEmployee.cpf) throw new Error("CPF já cadastrado")
     });
 
+    newEmployee.role = "photographer"
+
     let position = listAll["photographers"].push(newEmployee);
 
     writeDataModel(listAll)
@@ -27,6 +29,8 @@ function readPhotographerModelUnique(cpfPpher: string) {
     const photographer = listPpher.find(element => element.cpf == cpfPpher)
 
     if (photographer == undefined) throw new Error("Pessoa não existe")
+
+    photographer.role = "photographer"
 
     return photographer;
 }

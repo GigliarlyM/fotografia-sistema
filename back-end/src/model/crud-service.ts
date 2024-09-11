@@ -33,15 +33,16 @@ function getPhotoModel(cpfPhotographer: string) {
 
 function getPhotoAllModel() {
     const listPhotos = readDataModel().photos
-    const ObjetoEnvioApelido = {
-        id: 0,
-        url: "",
-        criador: "",
-        price: 0
-    }
-
-    return {}
     
+    const resp = listPhotos.map(photo => ({
+        id: photo.id,
+        url: photo.url,
+        criador: readPhotographerModelUnique(photo.cpfPhotographer).apelido,
+        price: photo.price,
+        promo: photo.promo
+    }))
+
+    return resp
 }
 
 function deletePhotoModel(idPhoto: number, cpfPhotographer: string) {
