@@ -3,21 +3,21 @@ import cors from "@fastify/cors"
 import { env } from "./env";
 import { validatorCompiler, serializerCompiler } from "fastify-type-provider-zod"
 
-import createPhotographer from "./routes/create-photographer";
-import getPhotographer from "./routes/get-photographer";
-import putPhotographer from "./routes/put-photographer";
-import deletePhotographer from "./routes/delete-photographer";
-import createClient from "./routes/create-client";
-import getClient from "./routes/get-client";
-import putClient from "./routes/put-client";
-import deleteClient from "./routes/delete-client";
-import createPhoto from "./routes/create-photo";
-import getPhoto from "./routes/get-photo";
-import postPromoPhoto from "./routes/post-promo-photo";
-import deletePhoto from "./routes/delete-photo";
-import validationClient from "./routes/validation-client";
-import validationPhotographer from "./routes/validation-photographer";
-import getPhotoAll from "./routes/get-photo-all";
+import createPhotographer from "./controllers/create-photographer";
+import getPhotographer from "./controllers/get-photographer";
+import putPhotographer from "./controllers/put-photographer";
+import deletePhotographer from "./controllers/delete-photographer";
+import createClient from "./controllers/create-client";
+import getClient from "./controllers/get-client";
+import putClient from "./controllers/put-client";
+import deleteClient from "./controllers/delete-client";
+import createPhoto from "./controllers/create-photo";
+import getPhoto from "./controllers/get-photo";
+import postPromoPhoto from "./controllers/post-promo-photo";
+import deletePhoto from "./controllers/delete-photo";
+import validationClient from "./controllers/validation-client";
+import validationPhotographer from "./controllers/validation-photographer";
+import getPhotoAll from "./controllers/get-photo-all";
 
 const app = fastify()
 
