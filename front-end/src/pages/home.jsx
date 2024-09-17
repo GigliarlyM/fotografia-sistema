@@ -15,8 +15,8 @@ export default function Home() {
                 <button onClick={() => navigate("cadastro-servico")}>Cadastrar serviço</button>
             </div>
             <div>
-                <h1>Sobre a Fotografia Sistema</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel libero vel arcu rhoncus sollicitudin ac vitae metus. Sed tincidunt, arcu vel dignissim bibendum, arcu justo gravida lacus, non porttitor felis odio vel velit. Donec laoreet, erat id consectetur faucibus, mauris dui consectetur ligula, non sagittis arcu neque non ex.</p>
+                <h1>Bem-vindo ao FotoHub !</h1>
+                <p>Estamos felizes em tê-lo aqui, onde talento e criatividade se encontram!<br/> Quer você seja um fotógrafo em busca de novos projetos ou um cliente à procura do profissional perfeito<br/> para capturar seus momentos especiais,<br/> você está no lugar certo.<br/> Explore, descubra e conecte-se com a arte da fotografia.</p>
             </div>
             <div>
                 <RenderPhotos />
