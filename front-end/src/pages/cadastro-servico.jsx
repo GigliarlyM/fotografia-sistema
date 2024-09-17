@@ -62,7 +62,7 @@ function ServiceManager() {
 
                 <label htmlFor="purchaseDate">Data do Serviço:</label>
                 <input type="date" id="purchaseDate" name="purchaseDate" required />
-
+                <br/>
                 <button type="submit">Contratar Serviço</button>
             </form>
 
