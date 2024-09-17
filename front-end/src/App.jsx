@@ -6,7 +6,6 @@ import LoginClient from './pages/login-client';
 import LoginPhotographer from './pages/login-photographer';
 import CadastroGeral from "./pages/signup-all";
 import RouterPhotographer from './routes/photographer';
-import ServiceManager from './pages/cadastro-servico';
 
 function App() {
   return (
@@ -16,8 +15,7 @@ function App() {
         <Route path="login/photographer" element={<LoginPhotographer />} />
         <Route path="login/client" element={<LoginClient />} />
         <Route path="signup" element={<CadastroGeral />} />
-        <Route path='photographer/*' element={<RouterPhotographer />} />
-        <Route path="/cadastro-servico" element={<ServiceManager />} />        
+        <Route path='photographer/*' element={<RouterPhotographer />} />       
         <Route path='*' element={<Navigate to="/" />} />
       </Routes>
     </Router>

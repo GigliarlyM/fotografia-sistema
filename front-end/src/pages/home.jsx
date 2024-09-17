@@ -12,7 +12,6 @@ export default function Home() {
                 <button onClick={() => navigate("login/photographer")}>Entrar como fotografo</button>
                 <button onClick={() => navigate("login/client")}>Entrar como Cliente</button>
                 <button onClick={() => navigate("signup")}>Cadastrar</button>
-                <button onClick={() => navigate("cadastro-servico")}>Cadastrar serviço</button>
             </div>
             <div>
                 <h1>Bem-vindo ao FotoHub !</h1>
