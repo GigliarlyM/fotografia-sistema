@@ -3,6 +3,7 @@
 
 import axios from "axios"
 import { useEffect, useState } from "react"
+import PromoModal from "./components/popup-promo"
 
 function GetPhoto() {
     const cpfPhotographer = sessionStorage.getItem("cpf_id")
@@ -14,6 +15,7 @@ function GetPhoto() {
         }
     ])
     const [isLoading, setIsLoanding] = useState(false)
+    const [isModelOpen, setIsModelOpen] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,8 +36,14 @@ function GetPhoto() {
         fetchData()
     }, [cpfPhotographer])
 
-    const handleSubmitPromo = ( id, valuePromo ) => {
-        console.log(`Id: ${id}, value: ${valuePromo}`);
+    const handleSubmitPromo = (id) => {
+        console.log(`Id: ${id}`);
+        setIsModelOpen(true)
+    }
+
+    const handleFormSubmit = (data) => {
+        console.log(`Dados: ${data}`);
+        setIsModelOpen(false)
     }
 
     if (isLoading) {
@@ -49,7 +57,12 @@ function GetPhoto() {
                 <>
                     <h3>Photo id: {photo.id}</h3>
                     <Photo url={photo.url} price={photo.price} />
-                    <button onClick={handleSubmitPromo}>Adicionar promo</button>
+                    <button onClick={() => handleSubmitPromo(photo.id)}>Adicionar promo</button>
+                    <PromoModal
+                        isOpen={isModelOpen}
+                        onClose={() => setIsModalOpen(false)}
+                        onFormSubmit={handleFormSubmit}
+                    />
                 </>
             ))}
         </>
