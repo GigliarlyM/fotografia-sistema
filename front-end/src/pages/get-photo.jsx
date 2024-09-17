@@ -51,7 +51,7 @@ function GetPhoto() {
     }
 
     return (
-        <>
+        <section>
             <h1>Photos</h1>
             {photos.map(photo => (
                 <div className="photo">
@@ -65,7 +65,7 @@ function GetPhoto() {
                     />
                 </div>
             ))}
-        </>
+        </section>
     )
 }
 
