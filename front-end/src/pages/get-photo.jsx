@@ -54,7 +54,7 @@ function GetPhoto() {
         <>
             <h1>Photos</h1>
             {photos.map(photo => (
-                <>
+                <div className="photo">
                     <h3>Photo id: {photo.id}</h3>
                     <Photo url={photo.url} price={photo.price} />
                     <button onClick={() => handleSubmitPromo(photo.id)}>Adicionar promo</button>
@@ -63,7 +63,7 @@ function GetPhoto() {
                         onClose={() => setIsModalOpen(false)}
                         onFormSubmit={handleFormSubmit}
                     />
-                </>
+                </div>
             ))}
         </>
     )
