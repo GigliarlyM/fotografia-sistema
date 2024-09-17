@@ -45,8 +45,10 @@ function ServiceManager() {
                 <input type="text" id="productType" name="productType" required />
 
                 <label htmlFor="productDescription">Descrição do Serviço:</label>
+                <br/>
                 <textarea id="productDescription" name="productDescription" required></textarea>
-
+                <br/>
+                <br/>
                 <button type="submit">Cadastrar Serviços</button>
             </form>
 
@@ -65,7 +67,7 @@ function ServiceManager() {
             </form>
 
             <div id="output">
-                <h3>Serviços Cadastrados</h3>
+                
                 {services.map((service, index) => (
                     <div key={index}>
                         <p><strong>Preço Atual:</strong> R$ {service.price.toFixed(2)}</p>
@@ -76,7 +78,7 @@ function ServiceManager() {
                     </div>
                 ))}
 
-                <h3>Serviços Contratados</h3>
+                
                 {purchases.map((purchase, index) => (
                     <div key={index}>
                         <p><strong>Tipo de Serviço:</strong> {purchase.product}</p>
