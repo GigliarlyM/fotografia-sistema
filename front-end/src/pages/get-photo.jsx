@@ -34,6 +34,10 @@ function GetPhoto() {
         fetchData()
     }, [cpfPhotographer])
 
+    const handleSubmitPromo = ( id, valuePromo ) => {
+        console.log(`Id: ${id}, value: ${valuePromo}`);
+    }
+
     if (isLoading) {
         return <div>Carregando fotos</div>
     }
@@ -42,7 +46,11 @@ function GetPhoto() {
         <>
             <h1>Photos</h1>
             {photos.map(photo => (
-                <Photo url={photo.url} price={photo.price} />
+                <>
+                    <h3>Photo id: {photo.id}</h3>
+                    <Photo url={photo.url} price={photo.price} />
+                    <button onClick={handleSubmitPromo}>Adicionar promo</button>
+                </>
             ))}
         </>
     )
@@ -50,10 +58,10 @@ function GetPhoto() {
 
 function Photo({ url, price }) {
     return (
-        <card>
+        <div className="photo">
             <img src={url} width={200} />
             <p>R$ {price}</p>
-        </card>
+        </div>
     )
 }
 
