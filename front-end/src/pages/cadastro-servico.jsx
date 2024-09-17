@@ -44,7 +44,7 @@ function ServiceManager() {
                 <label htmlFor="productType">Tipo de Serviço:</label>
                 <input type="text" id="productType" name="productType" required />
 
-                <label htmlFor="productDescription">Descrição do Serviço:</label>
+                <label htmlFor="productDescription">Escreva nessa caixa de texto (se houver) <br/> uma descrição mais detalhada do serviço.</label>
                 <br/>
                 <textarea id="productDescription" name="productDescription" required></textarea>
                 <br/>
