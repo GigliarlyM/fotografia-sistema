@@ -1,5 +1,5 @@
 .form {
-    background-color: rgb(93, 93, 93);
+    background-color: aqua;
 }
 input {
     display: block;
@@ -8,4 +8,6 @@ input {
     margin: 10px 20px;
     border-radius: 10px;
     padding: 5px 10px;
+    border: solid aqua;
 }
+
