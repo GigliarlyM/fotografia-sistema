@@ -15,7 +15,7 @@ export default function Home() {
             </div>
             <div>
                 <h1>Bem-vindo ao FotoHub !</h1>
-                <p>Estamos felizes em tê-lo aqui, onde talento e criatividade se encontram!<br/> Quer você seja um fotógrafo em busca de novos projetos ou um cliente à procura do profissional perfeito<br/> para capturar seus momentos especiais,<br/> você está no lugar certo.<br/> Explore, descubra e conecte-se com a arte da fotografia.</p>
+                <p>Estamos felizes em tê-lo aqui, onde talento e criatividade se encontram!<br/> Quer você seja um fotógrafo em busca de novos projetos ou um cliente à procura do profissional perfeito<br/> para capturar seus momentos especiais, você está no lugar certo.<br/> Explore, descubra e conecte-se com a arte da fotografia.</p>
             </div>
             <div>
                 <RenderPhotos />
