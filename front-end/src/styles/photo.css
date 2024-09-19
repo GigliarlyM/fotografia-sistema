@@ -1,11 +1,9 @@
 .photos {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    border: 1px solid red;
 }
 
 div.photo {
-    border: 1px solid red;
     display: inline-block;
     margin: 10px;
     padding: 15px 10px;
