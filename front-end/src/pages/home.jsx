@@ -54,7 +54,7 @@ function RenderPhotos () {
         <>
             {photos.map(photo => {
                 console.log(photo.url)
-                return (<Photo url={photo.url} price={photo.price} />)
+                return (<Photo className="photo" url={photo.url} price={photo.price} />)
             })}
         </>
     )

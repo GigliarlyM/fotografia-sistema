@@ -51,27 +51,29 @@ function GetPhoto() {
     }
 
     return (
-        <section>
+        <>
             <h1>Photos</h1>
-            {photos.map(photo => (
-                <div className="photo">
-                    <h3>Photo id: {photo.id}</h3>
-                    <Photo url={photo.url} price={photo.price} />
-                    <button onClick={() => handleSubmitPromo(photo.id)}>Adicionar promo</button>
-                    <PromoModal
-                        isOpen={isModelOpen}
-                        onClose={() => setIsModalOpen(false)}
-                        onFormSubmit={handleFormSubmit}
-                    />
-                </div>
-            ))}
-        </section>
+            <section className="photos">
+                {photos.map(photo => (
+                    <div className="photo">
+                        <h3>Photo id: {photo.id}</h3>
+                        <Photo url={photo.url} price={photo.price} />
+                        <button onClick={() => handleSubmitPromo(photo.id)}>Adicionar promo</button>
+                        <PromoModal
+                            isOpen={isModelOpen}
+                            onClose={() => setIsModalOpen(false)}
+                            onFormSubmit={handleFormSubmit}
+                        />
+                    </div>
+                ))}
+            </section>
+        </>
     )
 }
 
-function Photo({ url, price }) {
+function Photo({ url, price, className }) {
     return (
-        <div className="photo">
+        <div className={className}>
             <img src={url} width={200} />
             <p>R$ {price}</p>
         </div>

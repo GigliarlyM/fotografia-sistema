@@ -1,15 +1,17 @@
-div.photos {
+.photos {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    border: 1px solid red;
 }
 
 div.photo {
+    border: 1px solid red;
     display: inline-block;
     margin: 10px;
     padding: 15px 10px;
     background-color: rgba(183, 166, 194, 0.598);
     border-radius: 10px;
-    height: 330px;
+    min-height: 330px;
     text-align: center;
 }
 
