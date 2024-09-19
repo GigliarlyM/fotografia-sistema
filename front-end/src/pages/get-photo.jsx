@@ -36,13 +36,12 @@ function GetPhoto() {
         fetchData()
     }, [cpfPhotographer])
 
-    const handleSubmitPromo = (id) => {
-        console.log(`Id: ${id}`);
+    const handleSubmitPromo = () => {
         setIsModelOpen(true)
     }
 
-    const handleFormSubmit = (data) => {
-        console.log(`Dados: ${data}`);
+    const handleFormSubmit = (data, id) => {
+        console.log(`Dados: ${data} e ${id}`);
         setIsModelOpen(false)
     }
 
@@ -59,11 +58,12 @@ function GetPhoto() {
                     <div className="photo">
                         <h3>Photo id: {photo.id}</h3>
                         <Photo url={photo.url} price={photo.price} />
-                        <button onClick={() => handleSubmitPromo(photo.id)}>Adicionar promo</button>
+                        <button onClick={handleSubmitPromo}>Adicionar promo</button>
                         <PromoModal
                             isOpen={isModelOpen}
                             onClose={() => setIsModalOpen(false)}
                             onFormSubmit={handleFormSubmit}
+                            idPhoto={photo.id}
                         />
                     </div>
                 ))}

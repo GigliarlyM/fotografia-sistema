@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 
-const PromoModal = ({ isOpen, onClose, onFormSubmit }) => {
+const PromoModal = ({ isOpen, onClose, onFormSubmit, idPhoto }) => {
+  const [newPrice, setNewPrice] = useState(0);
+
   return (
     <Modal
       isOpen={isOpen}
@@ -9,12 +11,13 @@ const PromoModal = ({ isOpen, onClose, onFormSubmit }) => {
       contentLabel="Modal de Promoção"
     >
       <h2>Adicionar Promoção</h2>
-      <form onSubmit={onFormSubmit}>
+      {/* {<form onSubmit={onFormSubmit}>} */}
+      <div>
         {/* Campos do formulário */}
         <input type="text" name="title" placeholder="Título da promoção" />
-        <input type="number" name="discount" placeholder="Desconto (%)" />
-        <button type="submit">Salvar</button>
-      </form>
+        <input type="number" placeholder="Novo preço" value={newPrice} onChange={e => setNewPrice(e.target.value)} />
+        <button type="submit" onClick={() => onFormSubmit(newPrice, idPhoto)}>Salvar</button>
+      </div>
     </Modal>
   );
 };
