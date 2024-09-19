@@ -41,12 +41,15 @@ export default function PerfilPhotographer() {
     }
 
     return (
-        <div className="area-content">
+        <div >
+            <h1 className="cards-perfil">Adicione sua Fotografia</h1>
+            <div className="area-content">
             <p>{photographer.nome}</p>
             <p>{photographer.apelido}</p>
             <p>{photographer.dataNascimento.substring(0, 10)}</p>
             <p>{photographer.email}</p>
             <p>{photographer.cpf}</p>
+            </div>
             <button onClick={() => navigate("/photographer/photo/create")}>Adicionar foto</button>
             <button onClick={() => navigate("/photographer/alter")}>Alterar credenciais</button>
             <button onClick={() => navigate("/photographer/photo")}>Exibir fotos</button>

@@ -1,3 +1,4 @@
-.area-content {
-    margin: 0 40px;
+div {
+    display: flex;
+    justify-content: center;
 }
