@@ -41,8 +41,8 @@ export default function PerfilPhotographer() {
 
     return (
         <div >
-            <h1 className="cards-perfil">Adicione sua Fotografia</h1>
-            <div className="area-content">
+            <h1 className="cards-perfil">Perfil</h1>
+            <div className="dados do fotografo">
                 <p>{photographer.nome}</p>
                 <p>{photographer.apelido}</p>
                 <p>{photographer.dataNascimento.substring(0, 10)}</p>
