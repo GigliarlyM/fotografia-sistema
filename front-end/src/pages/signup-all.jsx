@@ -11,7 +11,7 @@ export default function CadastroGeral() {
 
     return (
         <div className="tab-container">
-            <h2>Cadastro</h2>
+            <h1>Cadastro</h1>
             <div className="tabs">
                 <button
                     id="clienteTab"

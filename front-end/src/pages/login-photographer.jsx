@@ -40,6 +40,11 @@ export default function LoginPhotographer() {
                     navigate('/photographer')
                 }
             }}
+        <div>
+            <button onClick={() => navigate("login/photographer")}>Voltar para a Home</button>
+
+            </div>           
+            <h1>Login Fotográfo</h1>
             <input type="text" required placeholder="Apelido" value={apelido} onChange={e => setApelido(e.target.value)} />
             <input type="email" required placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
             <button onClick={handleSubmit}>Entrar</button>
