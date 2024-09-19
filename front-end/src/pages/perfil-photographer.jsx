@@ -42,13 +42,11 @@ export default function PerfilPhotographer() {
     return (
         <div >
             <h1 className="cards-perfil">Perfil</h1>
-            <div className="dados do fotografo">
                 <p>{photographer.nome}</p>
                 <p>{photographer.apelido}</p>
                 <p>{photographer.dataNascimento.substring(0, 10)}</p>
                 <p>{photographer.email}</p>
-                <p>{photographer.cpf}</p>
-            </div>
+                <p>{photographer.cpf}</p> 
             <button onClick={() => navigate("/photographer/photo/create")}>Adicionar foto</button>
             <button onClick={() => navigate("/photographer/alter")}>Alterar credenciais</button>
             <button onClick={() => navigate("/photographer/photo")}>Exibir fotos</button>
