@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 export default function PerfilPhotographer() {
     const navigate = useNavigate()
     const cpfPhotographer = sessionStorage.getItem('cpf_id')
+    const [isLoading, setIsLoanding] = useState(false)
     const [photographer, setPhotographer] = useState({
         nome: '',
         apelido: '',
@@ -12,7 +13,6 @@ export default function PerfilPhotographer() {
         email: '',
         cpf: ''
     })
-    const [isLoading, setIsLoanding] = useState(false)
 
     useEffect(() => {
         const fetchPhotographerInfo = async () => {
@@ -28,6 +28,7 @@ export default function PerfilPhotographer() {
             } catch (error) {
                 console.error(error);
             } finally {
+
                 setIsLoanding(false)
             }
         }
@@ -42,11 +43,26 @@ export default function PerfilPhotographer() {
     return (
         <div >
             <h1 className="cards-perfil">Perfil</h1>
-                <p>{photographer.nome}</p>
-                <p>{photographer.apelido}</p>
-                <p>{photographer.dataNascimento.substring(0, 10)}</p>
-                <p>{photographer.email}</p>
-                <p>{photographer.cpf}</p> 
+
+            <section className="credential">
+                <div className="field-names">
+                    <p>Nome</p>
+                    <p>Apelido</p>
+                    <p>Data de Nascimento</p>
+                    <p>Email</p>
+                    {/* <p>CPF</p> dado sensivel */}
+                </div>
+                <div className="field">
+                    <p>{photographer.nome}</p>
+                    <p>{photographer.apelido}</p>
+                    <p>{`${photographer.dataNascimento.substring(8, 10)}
+                    / ${photographer.dataNascimento.substring(5, 7)} /
+                    ${photographer.dataNascimento.substring(0, 4)}`}</p>
+                    <p>{photographer.email}</p>
+                    {/* <p>CPF: {photographer.cpf}</p> dado sensivel  */}
+                </div>
+            </section>
+
             <button onClick={() => navigate("/photographer/photo/create")}>Adicionar foto</button>
             <button onClick={() => navigate("/photographer/alter")}>Alterar credenciais</button>
             <button onClick={() => navigate("/photographer/photo")}>Exibir fotos</button>

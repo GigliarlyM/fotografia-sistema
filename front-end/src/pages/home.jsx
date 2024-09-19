@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -55,10 +56,7 @@ function RenderPhotos () {
 
     return (
         <>
-            {photos.map(photo => {
-                console.log(photo.url)
-                return (<Photo className="photo" url={photo.url} price={photo.price} />)
-            })}
+            {photos.map(photo => <Photo className="photo" url={photo.url} price={photo.price} />)}
         </>
     )
 }

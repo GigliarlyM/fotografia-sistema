@@ -1,6 +1,5 @@
-import { throwDeprecation } from "process"
 import { readPhotographerModelUnique } from "./crud-photographer"
-import { Photo, readDataModel, writeDataModel } from "./func-data"
+import { readDataModel, writeDataModel } from "./func-data"
 
 interface PhotoSimple {
     url: string,
@@ -51,30 +50,32 @@ function deletePhotoModel(idPhoto: number, cpfPhotographer: string) {
         .filter(photo => photo.cpfPhotographer == cpfPhotographer)
         .findIndex(element => element.id === idPhoto)
     
-    if (index == -1) throw new Error("Foto não encontrada")
+    if (index == -1) throw new Error("Foto não encontrada");
 
     listAll.photos.splice(index, 1)
 
     writeDataModel(listAll)
 }
 
-function aplyPromoModel(idPhoto: number, priceAlt: number) {
+function aplyPromoModel(idPhoto: number, cpfPhotographer: string, priceAlt: number) {
     const listAll = readDataModel()
-    const photo = listAll.photos.find(element => element.id === idPhoto)
-
-    if (photo == undefined)
+    const photoPosition = listAll.photos.findIndex(element => element.id === idPhoto)
+    
+    if (photoPosition == -1)
         throw new Error(`Foto não encontrada`);
-
+    
+    const photo = listAll.photos[photoPosition]
     const decimalPrice = (photo.price - priceAlt) / photo.price
+
     photo.promo = decimalPrice // A promo eh guardada em porcentagem (decimal)
+    listAll.photos[photoPosition] = photo
+
+    writeDataModel(listAll)
 
     return decimalPrice
 }
 
 export {
-    createPhotoModel,
-    getPhotoModel,
-    deletePhotoModel,
-    aplyPromoModel,
-    getPhotoAllModel
+    aplyPromoModel, createPhotoModel, deletePhotoModel, getPhotoAllModel, getPhotoModel
 }
+

@@ -14,8 +14,6 @@ function createPhotographerModel(newEmployee: Employee) {
         if (element.cpf == newEmployee.cpf) throw new Error("CPF já cadastrado")
     });
 
-    newEmployee.role = "photographer"
-
     let position = listAll["photographers"].push(newEmployee);
 
     writeDataModel(listAll)

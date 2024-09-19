@@ -8,7 +8,6 @@ function Cadastro() {
     const [apelido, setApelido] = useState('');
     const [data, setData] = useState('');
     const [cpf, setCpf] = useState('');
-    let validade = false
 
     const handleSumbit = async () => {
         
@@ -19,24 +18,15 @@ function Cadastro() {
             dataNascimento: "2000-08-10",
             cpf
         }
-        console.log(pessoa)
 
         try {
             // A resposta do back end esta dando certo
             const response = await axios.post(`http://localhost:8080/photographer`, pessoa)
 
-            console.log("Fotografo cadastrado")
-            validade = true
-
-            if (validade) {
-                console.log(`Acesso livre`)
-            }
 
             console.log(response.data)
         } catch (error) {
-            //console.log(error.response.data.message)
             if (error.response.data.message == "CPF já cadastrado") {
-                validade = false
                 console.log("CPF já cadastrado")
             } else {
                 console.error(error)

@@ -13,7 +13,6 @@ export default function AlterDataPhotographer() {
             email,
             cpf: sessionStorage.getItem(`cpf_id`)
         }
-        console.log(dataAlt)
 
         try {
             const response = await axios.put(

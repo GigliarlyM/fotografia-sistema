@@ -9,9 +9,6 @@ export default function CreatePhoto() {
     const pathApi = "http://localhost:8080/photo"
     
     const handleSubmit = async () => {
-        console.log(title)
-        console.log(price)
-        console.log(link)
         try {
             const response = await axios.post(pathApi + `/${cpfPhotographer}`, { price, url: link })
             console.log(response)

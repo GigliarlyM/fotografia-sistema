@@ -8,7 +8,7 @@ export default async function postPromoPhoto(app: FastifyInstance) {
         schema: {
             params: z.object({
                 cpfPhotographer: z.string(),
-                idPhoto: z.number()
+                idPhoto: z.coerce.number()
             }),
             body: z.object({
                 priceAlt: z.coerce.number()
@@ -19,7 +19,7 @@ export default async function postPromoPhoto(app: FastifyInstance) {
         const { priceAlt } = request.body;
 
         // @TODO: fazer um sistema para verificar cpf antes de aplicar a promo
-        const decimalPromo = aplyPromoModel(idPhoto, priceAlt)
+        const decimalPromo = aplyPromoModel(idPhoto, cpfPhotographer, priceAlt)
         
         return { decimalPromo }
     })

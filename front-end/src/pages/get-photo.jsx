@@ -7,23 +7,17 @@ import PromoModal from "./components/popup-promo"
 
 function GetPhoto() {
     const cpfPhotographer = sessionStorage.getItem("cpf_id")
-    const [photos, setPhotos] = useState([
-        {
-            url: "",
-            price: 0,
-            title: "",
-        }
-    ])
+    const [photos, setPhotos] = useState([])
     const [isLoading, setIsLoanding] = useState(false)
     const [isModelOpen, setIsModelOpen] = useState(false)
+    const [idPhoto, setIdPhoto] = useState(0)
+    const uriApi = `http://localhost:8080/photo/${cpfPhotographer}`
 
     useEffect(() => {
         const fetchData = async () => {
             setIsLoanding(true)
             try {
-                const response = await axios.get(`http://localhost:8080/photo/${cpfPhotographer}`)
-
-                console.log(response.data.photos)
+                const response = await axios.get(uriApi)
 
                 setPhotos(response.data.photos)
             } catch (error) {
@@ -34,15 +28,33 @@ function GetPhoto() {
         }
 
         fetchData()
-    }, [cpfPhotographer])
+    }, [uriApi])
 
-    const handleSubmitPromo = () => {
+    const handleSubmitPromo = (idPhoto) => {
+        setIdPhoto(idPhoto)
         setIsModelOpen(true)
     }
 
-    const handleFormSubmit = (data, id) => {
-        console.log(`Dados: ${data} e ${id}`);
+    const handleFormSubmit = async (newPrice, id) => {
+        try {
+            const response = await axios.post(uriApi + `/${id}`, { priceAlt: newPrice })
+
+            console.log(response);
+        } catch (error) {
+            console.error(error)
+        }
+
         setIsModelOpen(false)
+    }
+
+    const handleDeletePhoto = async (id) => {
+        try {
+            const response = await axios.delete(uriApi + `/${id}`)
+            console.log(response);
+            setPhotos(photos.filter(photo => photo.id !== id))
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     if (isLoading) {
@@ -57,27 +69,29 @@ function GetPhoto() {
                 {photos.map(photo => (
                     <div className="photo">
                         <h3>Photo id: {photo.id}</h3>
-                        <Photo url={photo.url} price={photo.price} />
-                        <button onClick={handleSubmitPromo}>Adicionar promo</button>
-                        <PromoModal
-                            isOpen={isModelOpen}
-                            onClose={() => setIsModalOpen(false)}
-                            onFormSubmit={handleFormSubmit}
-                            idPhoto={photo.id}
-                        />
+                        <button className="minButton" onClick={() => handleDeletePhoto(photo.id)}>Apagar foto</button>
+                        <Photo url={photo.url} price={photo.price} promo={photo.promo} />
+                        <button onClick={() => handleSubmitPromo(photo.id)}>Adicionar promo</button>
                     </div>
                 ))}
+                <PromoModal
+                    isOpen={isModelOpen}
+                    onFormSubmit={handleFormSubmit}
+                    idPhoto={idPhoto}
+                />
             </section>
 
         </>
     )
 }
 
-function Photo({ url, price, className }) {
+function Photo({ url, price, className, promo }) {
     return (
         <div className={className}>
             <img src={url} width={200} />
-            <p>R$ {price}</p>
+            {promo ?
+                <p>R$ {price - (price * promo)} com - {promo * 100}%</p> :
+                <p>R$ {price}</p>}
         </div>
     )
 }

@@ -12,10 +12,8 @@ export default function LoginClient() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        console.log(`Apelido: ${apelido}, Email: ${email}`)
         try {
             const reponse = await axios.post(pathApi, { apelido, email })
-            console.log(reponse.data.client)
 
             if (reponse.data.client) {
                 setValid(true)
