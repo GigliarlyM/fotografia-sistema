@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function CadastroGeral() {
     const [activeForm, setActiveForm] = useState('cliente');
+    const navigate = useNavigate()
 
     const showForm = (form) => {
         setActiveForm(form);
@@ -11,8 +13,10 @@ export default function CadastroGeral() {
 
     return (
         <div className="tab-container">
+            <button onClick={() => navigate("login/photographer")}>Voltar para a Home</button>
             <h1>Cadastro</h1>
             <div className="tabs">
+                
                 <button
                     id="clienteTab"
                     className={activeForm === 'cliente' ? 'active' : ''}

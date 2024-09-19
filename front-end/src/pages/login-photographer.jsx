@@ -42,7 +42,7 @@ export default function LoginPhotographer() {
             }}
         <div>
             <button onClick={() => navigate("login/photographer")}>Voltar para a Home</button>
-
+            
             </div>           
             <h1>Login Fotográfo</h1>
             <input type="text" required placeholder="Apelido" value={apelido} onChange={e => setApelido(e.target.value)} />
