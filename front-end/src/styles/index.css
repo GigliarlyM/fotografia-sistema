@@ -42,22 +42,41 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  border-radius: 8px; 
+  border: 1px solid transparent; 
+  padding: 0.8em 1.5em; 
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: black;
+  background-color: black; 
+  color: white; 
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.3s ease; 
+  margin: 0 10px; 
 }
+
 button:hover {
-  border-color: aqua;
+  border-color: aqua; 
+  background-color: #1a1a1a; 
 }
+
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto aqua; 
+}
+
+button:active {
+  transform: scale(0.98); 
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; 
+  gap: 20px;
+  margin-top: 20px; 
+}
+.text-container{
+  text-align: center;
 }
 
 @media (prefers-color-scheme: light) {
@@ -71,4 +90,17 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+.footer {
+  color: white; 
+  text-align: center; 
+  padding: 20px 0; 
+  margin-top: 20px; 
+  position: relative; 
+  bottom: 0;
+  width: 100%; 
+}
+
+.footer p {
+  margin: 5px 0; 
 }
