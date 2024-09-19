@@ -1,7 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import "../styles/area-content.css"
 
 export default function PerfilPhotographer() {
     const navigate = useNavigate()
@@ -21,9 +20,9 @@ export default function PerfilPhotographer() {
             try {
                 if (cpfPhotographer) {
                     const response = await axios.get(`http://localhost:8080/photographer/${cpfPhotographer}`)
-                    
+
                     setPhotographer(response.data.photographer)
-                }else {
+                } else {
                     navigate("/photographer/login")
                 }
             } catch (error) {
@@ -44,11 +43,11 @@ export default function PerfilPhotographer() {
         <div >
             <h1 className="cards-perfil">Adicione sua Fotografia</h1>
             <div className="area-content">
-            <p>{photographer.nome}</p>
-            <p>{photographer.apelido}</p>
-            <p>{photographer.dataNascimento.substring(0, 10)}</p>
-            <p>{photographer.email}</p>
-            <p>{photographer.cpf}</p>
+                <p>{photographer.nome}</p>
+                <p>{photographer.apelido}</p>
+                <p>{photographer.dataNascimento.substring(0, 10)}</p>
+                <p>{photographer.email}</p>
+                <p>{photographer.cpf}</p>
             </div>
             <button onClick={() => navigate("/photographer/photo/create")}>Adicionar foto</button>
             <button onClick={() => navigate("/photographer/alter")}>Alterar credenciais</button>

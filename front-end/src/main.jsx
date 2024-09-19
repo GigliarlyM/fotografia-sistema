@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './styles/index.css'
 import './styles/photo.css'
+import './styles/cards.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
