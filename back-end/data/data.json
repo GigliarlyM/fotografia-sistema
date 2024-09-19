@@ -1,1 +1,102 @@
-{"photographers":[{"nome":"Gigliarly Marcelino Gonzaga","apelido":"Giglas","dataNascimento":"2004-07-12T00:00:00.000Z","email":"gigliarly.marcelino@gmail.com","cpf":"99999999","role":"photographer"},{"nome":"Gigliarly Marcelino Gonzaga","apelido":"Giglas","dataNascimento":"2004-07-12T00:00:00.000Z","email":"gigliarlymarcelino@gmail.com","cpf":"90909090","role":"photographer"},{"nome":"Jose","apelido":"josefi","dataNascimento":"2000-08-10T00:00:00.000Z","email":"jose@gmail.com","cpf":"12345678901","role":"photographer"},{"nome":"Jose","apelido":"josefi","dataNascimento":"2000-08-10T00:00:00.000Z","email":"jose@gmail.com","cpf":"12345678981","role":"photographer"}],"clients":[{"nome":"Douglas","apelido":"Doug","email":"douglas@gmail.com","cpf":"123456789"}],"photos":[{"id":1,"url":"https://ovicio.com.br/wp-content/uploads/2021/12/20211208-cropped-20211208-e273e9c0-66e2-48f9-aea1-e30872da8fdf.jpeg","cpfPhotographer":"90909090","price":5,"promo":0.2},{"id":2,"url":"https://ovicio.com.br/wp-content/uploads/2021/12/20211208-cropped-20211208-e273e9c0-66e2-48f9-aea1-e30872da8fdf.jpeg","cpfPhotographer":"90909090","price":10,"promo":0.2},{"url":"https://www.omniblog.com.br/_next/image?url=https%3A%2F%2Fmedia.graphassets.com%2Foutput%3Dformat%3Awebp%2FcG3u1IEmSjSAUYDKiwjQ&w=3840&q=75","price":0,"cpfPhotographer":"12345678901","id":3,"promo":0},{"url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS89QKGPGN3W2D_f2LlEV74dJ29yAsvkp1_AA&s","price":200,"cpfPhotographer":"90909090","id":4,"promo":0},{"url":"","price":0,"cpfPhotographer":"90909090","id":5,"promo":0}]}
+{
+    "photographers": [
+        {
+            "nome": "Gigliarly Marcelino Gonzaga",
+            "apelido": "Giglas",
+            "dataNascimento": "2004-07-12T00:00:00.000Z",
+            "email": "gigliarly.marcelino@gmail.com",
+            "cpf": "99999999",
+            "role": "photographer"
+        },
+        {
+            "nome": "Gigliarly Marcelino Gonzaga",
+            "apelido": "Giglas",
+            "dataNascimento": "2004-07-12T00:00:00.000Z",
+            "email": "gigliarlymarcelino@gmail.com",
+            "cpf": "90909090",
+            "role": "photographer"
+        },
+        {
+            "nome": "Jose",
+            "apelido": "josefi",
+            "dataNascimento": "2000-08-10T00:00:00.000Z",
+            "email": "jose@gmail.com",
+            "cpf": "12345678901",
+            "role": "photographer"
+        },
+        {
+            "nome": "Jose",
+            "apelido": "josefi",
+            "dataNascimento": "2000-08-10T00:00:00.000Z",
+            "email": "jose@gmail.com",
+            "cpf": "12345678981",
+            "role": "photographer"
+        }
+    ],
+    "clients": [
+        {
+            "nome": "Douglas",
+            "apelido": "Doug",
+            "email": "douglas@gmail.com",
+            "cpf": "123456789"
+        }
+    ],
+    "photos": [
+        {
+            "id": 1,
+            "url": "https://ovicio.com.br/wp-content/uploads/2021/12/20211208-cropped-20211208-e273e9c0-66e2-48f9-aea1-e30872da8fdf.jpeg",
+            "cpfPhotographer": "90909090",
+            "price": 5,
+            "promo": 0.2
+        },
+        {
+            "id": 2,
+            "url": "https://ovicio.com.br/wp-content/uploads/2021/12/20211208-cropped-20211208-e273e9c0-66e2-48f9-aea1-e30872da8fdf.jpeg",
+            "cpfPhotographer": "90909090",
+            "price": 10,
+            "promo": 0.2
+        },
+        {
+            "url": "https://www.omniblog.com.br/_next/image?url=https%3A%2F%2Fmedia.graphassets.com%2Foutput%3Dformat%3Awebp%2FcG3u1IEmSjSAUYDKiwjQ&w=3840&q=75",
+            "price": 0,
+            "cpfPhotographer": "12345678901",
+            "id": 3,
+            "promo": 0
+        },
+        {
+            "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS89QKGPGN3W2D_f2LlEV74dJ29yAsvkp1_AA&s",
+            "price": 200,
+            "cpfPhotographer": "90909090",
+            "id": 4,
+            "promo": 0
+        },
+        {
+            "url": "",
+            "price": 0,
+            "cpfPhotographer": "90909090",
+            "id": 5,
+            "promo": 0
+        },
+        {
+            "url": "https://kanto.legiaodosherois.com.br/w760-h398-gnw-cfill-q95/wp-content/uploads/2021/07/legiao_Uj1L3fyOEzDM.jpg.webp",
+            "price": 20,
+            "cpfPhotographer": "99999999",
+            "id": 6,
+            "promo": 0
+        },
+        {
+            "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyT-JK9Sr2NgmmJqqtDJafyjRJcF5Bxb3T3w&s",
+            "price": 20,
+            "cpfPhotographer": "99999999",
+            "id": 7,
+            "promo": 0
+        },
+        {
+            "url": "https://cdn.selectgame.net/wp-content/uploads/2023/02/Megumi-Fushiguro-Jujutsu-Kaisen-capa.webp",
+            "price": 20,
+            "cpfPhotographer": "99999999",
+            "id": 8,
+            "promo": 0
+        }
+    ]
+}
