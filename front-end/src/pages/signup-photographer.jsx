@@ -21,8 +21,7 @@ function Cadastro() {
 
         try {
             // A resposta do back end esta dando certo
-            const response = await axios.post(`http://localhost:8080/photographer`, pessoa)
-
+            const response = await axios.post(import.meta.env.VITE_APP_API_URL + `/photographer`, pessoa)
 
             console.log(response.data)
         } catch (error) {

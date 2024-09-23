@@ -32,12 +32,13 @@ function RenderPhotos () {
     // @TODO: Fazer um tipo de avaliação; E retonar o Apelido do ser humano que postou
     const [photos, setPhotos] = useState([ ])
     const [isLoading, setIsLoanding] = useState(false)
+    const uriApi = import.meta.env.VITE_APP_API_URL + `/photo`
 
     useEffect(() => {
         const fetchData = async () => {
             setIsLoanding(true)
             try {
-                const response = await axios.get(`http://localhost:8080/photo`)
+                const response = await axios.get(uriApi)
 
                 setPhotos(response.data.photos)
             } catch (error) {

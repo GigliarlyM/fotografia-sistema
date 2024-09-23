@@ -3,6 +3,7 @@
 
 import axios from "axios"
 import { useEffect, useState } from "react"
+
 import PromoModal from "./components/popup-promo"
 
 function GetPhoto() {
@@ -11,7 +12,7 @@ function GetPhoto() {
     const [isLoading, setIsLoanding] = useState(false)
     const [isModelOpen, setIsModelOpen] = useState(false)
     const [idPhoto, setIdPhoto] = useState(0)
-    const uriApi = `http://localhost:8080/photo/${cpfPhotographer}`
+    const uriApi = import.meta.env.VITE_APP_API_URL + `/photo/${cpfPhotographer}`
 
     useEffect(() => {
         const fetchData = async () => {

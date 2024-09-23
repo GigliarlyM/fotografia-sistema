@@ -5,6 +5,7 @@ export default function AlterDataPhotographer() {
     // essa pagina precisa do CPF do login
     const [apelido, setApelido] = useState('')
     const [email, setEmail] = useState('')
+    const API_URI = import.meta.env.VITE_APP_API_URL
 
     const handleSubmit = async () => {
         // fazer a requisição PUT para atualizar os dados do photographer
@@ -16,7 +17,7 @@ export default function AlterDataPhotographer() {
 
         try {
             const response = await axios.put(
-                `http://localhost:8080/photographer/${dataAlt.cpf}`,
+                API_URL + `/photographer/${dataAlt.cpf}`,
                 {apelido: dataAlt.apelido, email: dataAlt.email}
             )
 

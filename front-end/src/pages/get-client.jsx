@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 function GetClient() {
     const [client, setClient] = useState([])
     const [isLoading, setIsLoanding] = useState(false)
-    const uriApi = `http://localhost:8080/client`
+    const uriApi = import.meta.env.VITE_APP_API_URL + `/client`
 
     useEffect(() => {
         const fetchData = async () => {
