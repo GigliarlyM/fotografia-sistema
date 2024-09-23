@@ -70,8 +70,10 @@ export default function CadastroGeral() {
 
                         <button type="submit">Cadastrar Fotógrafo</button>
                     </form>
+                    
                 </div>
             )}
+            <footer className="footer"> &copy; 2024 FotoHub - Todos os direitos reservados</footer>
         </div>
     );
 }

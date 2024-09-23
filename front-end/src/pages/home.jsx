@@ -11,7 +11,7 @@ export default function Home() {
     return (
         <>
             <div className="button-container">
-                <button onClick={() => navigate("login/photographer")}>Entrar como fotografo</button>
+                <button onClick={() => navigate("login/photographer")}>Entrar como Fotográfo</button>
                 <button onClick={() => navigate("login/client")}>Entrar como Cliente</button>
                 <button onClick={() => navigate("signup")}>Cadastrar</button>
             </div>

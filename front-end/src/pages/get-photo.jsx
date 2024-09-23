@@ -92,6 +92,7 @@ function Photo({ url, price, className, promo }) {
             {promo ?
                 <p>R$ {price - (price * promo)} com - {promo * 100}%</p> :
                 <p>R$ {price}</p>}
+                
         </div>
     )
 }

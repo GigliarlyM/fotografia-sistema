@@ -66,6 +66,7 @@ export default function PerfilPhotographer() {
             <button onClick={() => navigate("/photographer/photo/create")}>Adicionar foto</button>
             <button onClick={() => navigate("/photographer/alter")}>Alterar credenciais</button>
             <button onClick={() => navigate("/photographer/photo")}>Exibir fotos</button>
+            <footer className="footer"> &copy; 2024 FotoHub - Todos os direitos reservados</footer>
         </div>
     )
 }

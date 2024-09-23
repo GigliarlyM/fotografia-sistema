@@ -18,6 +18,7 @@ const PromoModal = ({ isOpen, onClose, onFormSubmit, idPhoto }) => {
         <input type="text" placeholder="Título da promoção" />
         <input type="number" placeholder="Novo preço" value={newPrice} onChange={e => setNewPrice(e.target.value)} />
         <button type="submit" onClick={() => onFormSubmit(newPrice, idPhoto)}>Salvar</button>
+        <footer className="footer"> &copy; 2024 FotoHub - Todos os direitos reservados</footer>
       </div>
     </Modal>
   );

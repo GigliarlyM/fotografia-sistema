@@ -42,6 +42,7 @@ function Cadastro() {
             <input type="date" value={data} onChange={e => setData(e.target.value)} />
             <input type="text" required placeholder="xxx.xxx.xxx-xx" value={cpf} onChange={e => setCpf(e.target.value)} />
             <button onClick={handleSumbit}>Entrar</button>
+            <footer className="footer"> &copy; 2024 FotoHub - Todos os direitos reservados</footer>
         </div>
     )
 }
