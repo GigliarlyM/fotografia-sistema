@@ -35,6 +35,7 @@ export default function CadastroGeral() {
 
             {activeForm === 'cliente' && (
                 <div id="clienteForm" className="form-container active">
+                    {/* Nao está funcionando, @TODO colocar funcionalidade igual o login-photographer com a requisicao */}
                     <form action="/cadastrar_cliente" method="POST">
                         <br />
                         <label htmlFor="nomeCliente">Nome</label>
@@ -57,6 +58,7 @@ export default function CadastroGeral() {
 
             {activeForm === 'fotografo' && (
                 <div id="fotografoForm" className="form-container">
+                    {/* Nao está funcionando, @TODO colocar funcionalidade igual o login-photographer com a requisicao */}
                     <form action="/cadastrar_fotografo" method="POST">
                         <br />
                         <label htmlFor="nomeFotografo">Nome</label>

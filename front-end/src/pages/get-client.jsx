@@ -5,7 +5,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 function GetClient() {
-    const [client, setClient] = useState([])
+    const [clients, setClients] = useState([])
     const [isLoading, setIsLoanding] = useState(false)
     const uriApi = import.meta.env.VITE_APP_API_URL + `/client`
 
@@ -15,7 +15,8 @@ function GetClient() {
             try {
                 const response = await axios.get(uriApi)
 
-                setClient(response.data.client)
+                setClients(response.data.clients)
+                console.log(response.data.clients)
             } catch (error) {
                 console.error(error);
             } finally {
@@ -35,17 +36,23 @@ function GetClient() {
             <h1>client</h1>
 
             <section className="clients">
-
+                {clients.map(cli => (
+                    <div className="client">
+                        <Client name={cli.nome} email={cli.email}/>
+                    </div>
+                ))}
             </section>
 
         </>
     )
 }
 
-function Client({ name, className }) {
+function Client({ name, className, email }) {
     return (
         <div className={className}>
             <p>{name}</p>
+            <p>{email}</p>
+            <hr />
         </div>
     )
 }

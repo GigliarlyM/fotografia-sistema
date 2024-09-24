@@ -26,7 +26,7 @@ export default function LoginClient() {
     }
 
     if (valid) {
-        navigate('/client')
+        navigate('/')
     }
 
     return (
