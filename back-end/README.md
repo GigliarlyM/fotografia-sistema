@@ -33,6 +33,7 @@ Executar projeto: `npm run dev`
             email: string,
             cpf: string
             }
+    * get
             
 * /client/:cpfClient
     * put
