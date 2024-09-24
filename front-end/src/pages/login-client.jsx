@@ -40,7 +40,9 @@ export default function LoginClient() {
             <input type="text" required placeholder="Apelido" value={apelido} onChange={e => setApelido(e.target.value)} />
             <input type="email" required placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
             <br />
-            <button onClick={handleSubmit}>Entrar</button>
+            <div className="botao-Entrar">
+                <button onClick={handleSubmit}>Entrar</button>
+            </div>
             <footer className="footer"> &copy; 2024 FotoHub - Todos os direitos reservados</footer>
         </div>
         

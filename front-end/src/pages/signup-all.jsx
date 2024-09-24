@@ -47,7 +47,10 @@ export default function CadastroGeral() {
                         <input type="text" id="cpfCliente" name="cpfCliente" placeholder="CPF" required />
 
                         <br />
+
+                        <div className="botao-Cadastrar">
                         <button type="submit">Cadastrar Cliente/Usuário</button>
+                        </div>
                     </form>
                 </div>
             )}
@@ -72,7 +75,10 @@ export default function CadastroGeral() {
                         <input type="text" id="cpfFotografo" name="cpfFotografo" placeholder="CPF" required />
 
                         <br />
+
+                        <div className="botao-Cadastrar">
                         <button type="submit">Cadastrar Fotógrafo</button>
+                        </div>
                     </form>
                     
                 </div>
