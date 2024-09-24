@@ -32,7 +32,10 @@ export default function AlterDataPhotographer() {
             <h1 className="cards-perfil">Altere aqui seus Dados</h1>
             <input type="text" placeholder="Apelido" value={apelido} onChange={e => setApelido(e.target.value)}/>
             <input type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}/>
+            <br />
+            <div className="botao-Atualizar">
             <button onClick={handleSubmit}>Atualizar dados</button>
+            </div>
             <footer className="footer"> &copy; 2024 FotoHub - Todos os direitos reservados</footer>
         </div>
     )

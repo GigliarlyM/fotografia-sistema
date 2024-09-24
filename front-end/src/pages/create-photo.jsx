@@ -24,7 +24,10 @@ export default function CreatePhoto() {
             <input type="number" placeholder="10.00" value={price} onChange={e => setPrice(e.target.value)} />
             <input type="url" placeholder="http://www.google.com" value={link} onChange={e => setLink(e.target.value)} />
             <br />
+
+            <div className="botao-Enviar">
             <button type="submit" onClick={handleSubmit}>Enviar</button>
+            </div>
             <footer className="footer"> &copy; 2024 FotoHub - Todos os direitos reservados</footer>
         </div>
     )
