@@ -31,6 +31,14 @@ function readClientModelUnique(cpfClient: string) {
     return client;
 }
 
+function readClientModelAll() {
+    const listClient = readDataModel().clients;
+
+    if (listClient.length == 0) throw new Error("Pessoa não existe")
+
+    return listClient;
+}
+
 function updateClientModel(cpfClient: string, clientAlt: ClientAlter) {
     const listAll = readDataModel()
 
@@ -61,6 +69,7 @@ function deleteClientModel(cpfClient: string) {
 export {
     createClientModel,
     readClientModelUnique,
+    readClientModelAll,
     updateClientModel,
     deleteClientModel
 };

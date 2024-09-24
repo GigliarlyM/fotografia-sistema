@@ -1,23 +1,24 @@
+import cors from "@fastify/cors";
 import fastify from "fastify";
-import cors from "@fastify/cors"
+import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 import { env } from "./env";
-import { validatorCompiler, serializerCompiler } from "fastify-type-provider-zod"
 
-import createPhotographer from "./controllers/create-photographer";
-import getPhotographer from "./controllers/get-photographer";
-import putPhotographer from "./controllers/put-photographer";
-import deletePhotographer from "./controllers/delete-photographer";
 import createClient from "./controllers/create-client";
-import getClient from "./controllers/get-client";
-import putClient from "./controllers/put-client";
-import deleteClient from "./controllers/delete-client";
 import createPhoto from "./controllers/create-photo";
-import getPhoto from "./controllers/get-photo";
-import postPromoPhoto from "./controllers/post-promo-photo";
+import createPhotographer from "./controllers/create-photographer";
+import deleteClient from "./controllers/delete-client";
 import deletePhoto from "./controllers/delete-photo";
+import deletePhotographer from "./controllers/delete-photographer";
+import getClientAll from "./controllers/get-client";
+import getClientUnique from "./controllers/get-client-unique";
+import getPhoto from "./controllers/get-photo";
+import getPhotoAll from "./controllers/get-photo-all";
+import getPhotographer from "./controllers/get-photographer";
+import postPromoPhoto from "./controllers/post-promo-photo";
+import putClient from "./controllers/put-client";
+import putPhotographer from "./controllers/put-photographer";
 import validationClient from "./controllers/validation-client";
 import validationPhotographer from "./controllers/validation-photographer";
-import getPhotoAll from "./controllers/get-photo-all";
 
 const app = fastify()
 
@@ -36,7 +37,8 @@ app.register(deletePhotographer)
 
 // Crud do Client
 app.register(createClient)
-app.register(getClient)
+app.register(getClientUnique)
+app.register(getClientAll)
 app.register(putClient)
 app.register(deleteClient)
 

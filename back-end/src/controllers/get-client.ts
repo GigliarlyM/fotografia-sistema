@@ -1,22 +1,14 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
-import { z } from "zod";
-import { readClientModelUnique } from "../model/crud-client";
+import { readClientModelAll } from "../model/crud-client";
 
 
-export default async function getClient(app: FastifyInstance) {
+export default async function getClientAll(app: FastifyInstance) {
     //@Todo: mudar o IdPppher
-    app.withTypeProvider<ZodTypeProvider>().get('/client/:cpfClient', {
-        schema: {
-            params: z.object({
-                cpfClient: z.string()
-            })
-        },
-    }, async (request) => {
-        const { cpfClient } = request.params
+    app.withTypeProvider<ZodTypeProvider>().get('/client', {
+    },async () => {
+        const clients = readClientModelAll()
 
-        const client = readClientModelUnique(cpfClient)
-
-        return { client }
+        return { clients }
     })
 }
