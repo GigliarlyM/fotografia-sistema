@@ -36,6 +36,7 @@ export default function CadastroGeral() {
             {activeForm === 'cliente' && (
                 <div id="clienteForm" className="form-container active">
                     <form action="/cadastrar_cliente" method="POST">
+                        <br />
                         <label htmlFor="nomeCliente">Nome</label>
                         <input type="text" id="nomeCliente" name="nomeCliente" placeholder="Nome" required />
 
@@ -45,6 +46,7 @@ export default function CadastroGeral() {
                         <label htmlFor="cpfCliente">CPF</label>
                         <input type="text" id="cpfCliente" name="cpfCliente" placeholder="CPF" required />
 
+                        <br />
                         <button type="submit">Cadastrar Cliente/Usuário</button>
                     </form>
                 </div>
@@ -53,6 +55,7 @@ export default function CadastroGeral() {
             {activeForm === 'fotografo' && (
                 <div id="fotografoForm" className="form-container">
                     <form action="/cadastrar_fotografo" method="POST">
+                        <br />
                         <label htmlFor="nomeFotografo">Nome</label>
                         <input type="text" id="nomeFotografo" name="nomeFotografo" placeholder="Nome" required />
 
@@ -68,6 +71,7 @@ export default function CadastroGeral() {
                         <label htmlFor="cpfFotografo">CPF</label>
                         <input type="text" id="cpfFotografo" name="cpfFotografo" placeholder="CPF" required />
 
+                        <br />
                         <button type="submit">Cadastrar Fotógrafo</button>
                     </form>
                     
