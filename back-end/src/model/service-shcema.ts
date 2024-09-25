@@ -11,7 +11,7 @@ const service = new mongoose.Schema({
         type: String,
         required: true
     },
-    preco: {
+    price: {
         type: Number,
         required: true
     },

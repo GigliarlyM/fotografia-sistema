@@ -12,7 +12,7 @@ async function createPhotographerModel(newEmployee: Employee) {
     return photographer
 }
 
-async function readPhotographerModelUnique(cpfPpher: string) {
+async function getPhotographerUnique(cpfPpher: string) {
     const photographer = await photographerShcema.findOne({ cpf: cpfPpher })
 
     if (!photographer) throw new Error(`Nao existe photographer com esse cpf`)
@@ -33,7 +33,7 @@ async function deletePhotographerModel(cpfPpher: string) {
 }
 
 export {
-    createPhotographerModel, deletePhotographerModel, readPhotographerModelUnique,
+    createPhotographerModel, deletePhotographerModel, getPhotographerUnique,
     updatePhotographerModel
 };
 

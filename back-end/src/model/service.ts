@@ -1,4 +1,6 @@
 import { Photo, readDataModel, writeDataModel } from "./interface-data"
+import { getPhotographerUnique } from "./photographer"
+import photographerShcema from "./photographer-shcema"
 import serviceShcema from "./service-shcema"
 
 interface PhotoSimple {
@@ -14,17 +16,25 @@ async function createPhotoModel(photo: PhotoSimple) {
 }
 
 async function getPhotoModel(cpfPhotographer: string) {
-    return await serviceShcema.find({photographerCpf: cpfPhotographer})
+    return await serviceShcema.find({ photographerCpf: cpfPhotographer })
 }
 
 async function getPhotoAllModel() {
     const listPhotos = await serviceShcema.find()
 
     if (listPhotos.length === 0) throw new Error("Sem fotos no Sistema")
-    
-    const listPhotosResult = listPhotos.map(photo => ({
-        url: photo.url
-    }))
+
+    const listPhotosResult = listPhotos.map(async photo => {
+        const photographer = await photographerShcema.findById(photo.photographerCpf)
+
+        return {
+            url: photo.url,
+            price: photo.price,
+            promo: photo.photographerCpf,
+            photographercpf: photographer?.cpf
+        }
+
+    })
 }
 
 function deletePhotoModel(idPhoto: number, cpfPhotographer: string) {
