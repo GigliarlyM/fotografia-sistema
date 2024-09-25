@@ -1,47 +1,30 @@
-import { readPhotographerModelUnique } from "./photographer"
-import { readDataModel, writeDataModel } from "./func-data"
+import { Photo, readDataModel, writeDataModel } from "./interface-data"
+import serviceShcema from "./service-shcema"
 
 interface PhotoSimple {
     url: string,
-    price: number
+    price: number,
+    photographerCpf: string
 }
 
-function createPhotoModel(cpfPhotographer: string, photo: PhotoSimple) {
-    const listAll = readDataModel()
+async function createPhotoModel(photo: PhotoSimple) {
+    const service = await serviceShcema.create(photo)
 
-    readPhotographerModelUnique(cpfPhotographer)
-
-    if (listAll.photos.find(element => element.url === photo.url))
-        throw new Error(`Existe uma foto com essa url`);
-
-    const position = listAll.photos.push({
-        url: photo.url,
-        price: photo.price,
-        cpfPhotographer,
-        id: listAll.photos.length + 1,
-        promo: 0
-    })
-    writeDataModel(listAll)
-
-    return position
+    return service
 }
 
-function getPhotoModel(cpfPhotographer: string) {
-    return readDataModel().photos.filter(element => element.cpfPhotographer == cpfPhotographer)
+async function getPhotoModel(cpfPhotographer: string) {
+    return await serviceShcema.find({photographerCpf: cpfPhotographer})
 }
 
-function getPhotoAllModel() {
-    const listPhotos = readDataModel().photos
+async function getPhotoAllModel() {
+    const listPhotos = await serviceShcema.find()
 
-    const resp = listPhotos.map(photo => ({
-        id: photo.id,
-        url: photo.url,
-        criador: readPhotographerModelUnique(photo.cpfPhotographer).apelido,
-        price: photo.price,
-        promo: photo.promo
+    if (listPhotos.length === 0) throw new Error("Sem fotos no Sistema")
+    
+    const listPhotosResult = listPhotos.map(photo => ({
+        url: photo.url
     }))
-
-    return resp
 }
 
 function deletePhotoModel(idPhoto: number, cpfPhotographer: string) {

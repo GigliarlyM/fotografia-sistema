@@ -1,63 +1,35 @@
-import { Employee, readDataModel, writeDataModel } from './func-data';
+import { Employee } from './interface-data';
+import photographerShcema from './photographer-shcema';
 
 interface EmployeeAlter {
     apelido: string,
     email: string
 }
 
-function createPhotographerModel(newEmployee: Employee) {
-    const listAll = readDataModel()
-
-    listAll.photographers.forEach(element => {
-        if (element.apelido == newEmployee.apelido) throw new Error("Apelido já cadastrado no sistema")
-        
-        if (element.cpf == newEmployee.cpf) throw new Error("CPF já cadastrado")
-    });
-
-    let position = listAll["photographers"].push(newEmployee);
-
-    writeDataModel(listAll)
-
-    return position
-}
-
-function readPhotographerModelUnique(cpfPpher: string) {
-    const listPpher = readDataModel().photographers;
-
-    const photographer = listPpher.find(element => element.cpf == cpfPpher)
-
-    if (photographer == undefined) throw new Error("Pessoa não existe")
-
-    photographer.role = "photographer"
-
-    return photographer;
-}
-
-function updatePhotographerModel(cpfPpher: string, employee: EmployeeAlter) {
-    const listAll = readDataModel()
-
-    const photographer = readPhotographerModelUnique(cpfPpher)
-    const position = listAll.photographers.indexOf(photographer)
-
-    photographer.email = employee.email
-    photographer.apelido = employee.apelido
-
-    listAll.photographers[position] = photographer
-
-    writeDataModel(listAll)
+async function createPhotographerModel(newEmployee: Employee) {
+    const photographer = await photographerShcema.create(newEmployee)
 
     return photographer
 }
 
-function deletePhotographerModel(cpfPpher: string) {
-    const list = readDataModel()
+async function readPhotographerModelUnique(cpfPpher: string) {
+    const photographer = await photographerShcema.findOne({ cpf: cpfPpher })
 
-    const photographer = readPhotographerModelUnique(cpfPpher)
-    const position = list.photographers.indexOf(photographer)
+    if (!photographer) throw new Error(`Nao existe photographer com esse cpf`)
 
-    list.photographers.splice(position, 1)
+    return photographer
+}
 
-    writeDataModel(list)
+async function updatePhotographerModel(cpfPpher: string, employee: EmployeeAlter) {
+    const photographer = await photographerShcema.findOneAndUpdate({ cpf: cpfPpher }, employee)
+
+    if (!photographer) throw new Error(`Nao existe photographer com esse cpf`)
+
+    return photographer
+}
+
+async function deletePhotographerModel(cpfPpher: string) {
+    await photographerShcema.findOneAndDelete({ cpf: cpfPpher })
 }
 
 export {

@@ -4,10 +4,10 @@ import { z } from "zod";
 import { createPhotoModel } from "../model/service";
 
 export default async function createPhoto(app: FastifyInstance) {
-    app.withTypeProvider<ZodTypeProvider>().post('/photo/:cpfPhotographer', {
+    app.withTypeProvider<ZodTypeProvider>().post('/photo/:photographerCpf', {
         schema: {
             params: z.object({
-                cpfPhotographer: z.string()
+                photographerCpf: z.string()
             }),
             body: z.object({
                 url: z.string(),
@@ -16,9 +16,9 @@ export default async function createPhoto(app: FastifyInstance) {
         },
     }, async (request) => {
         const { url, price } = request.body
-        const { cpfPhotographer } = request.params
+        const { photographerCpf } = request.params
 
-        const position = createPhotoModel(cpfPhotographer, { url, price })
+        const position = await createPhotoModel({url, price, photographerCpf})
 
         return { position }
     })

@@ -19,7 +19,7 @@ export default async function putPhotographer(app: FastifyInstance) {
         const { cpfPhotographer } = request.params
         const {  apelido, email } = request.body
 
-        const photographer = updatePhotographerModel(cpfPhotographer, {apelido, email})
+        const photographer = await updatePhotographerModel(cpfPhotographer, {apelido, email})
 
         return { photographer }
     })

@@ -1,6 +1,6 @@
 import { MongooseError } from 'mongoose';
 import clientShema from './client-shema';
-import { Client } from './func-data';
+import { Client } from './interface-data';
 
 interface ClientAlter {
     apelido: string,

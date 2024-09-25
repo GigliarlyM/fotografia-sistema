@@ -13,7 +13,7 @@ export default async function getPhoto(app: FastifyInstance) {
     }, async (request) => {
         const { cpfPhotographer } = request.params
 
-        const photos = getPhotoModel(cpfPhotographer)
+        const photos = await getPhotoModel(cpfPhotographer)
 
         return { photos }
     })

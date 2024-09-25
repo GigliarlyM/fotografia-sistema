@@ -1,4 +1,4 @@
-import { readDataModel } from "./func-data"
+import { readDataModel } from "./interface-data"
 
 function validationPhotographerModel(email: string) {
     const listPhotographers = readDataModel().photographers
