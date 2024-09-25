@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
-import { updateClientModel } from "../model/crud-client";
+import { updateClientModel } from "../model/client";
 
 export default async function putClient(app: FastifyInstance) {
     //@Todo: mudar o IdPppher
@@ -19,7 +19,7 @@ export default async function putClient(app: FastifyInstance) {
         const { cpfClient } = request.params
         const { apelido, email } = request.body
 
-        const client = updateClientModel(cpfClient, {apelido, email})
+        const client = await updateClientModel(cpfClient, {apelido, email})
 
         return { client }
     })

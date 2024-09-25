@@ -13,7 +13,7 @@ export default async function validationClient(app: FastifyInstance) {
     }, async (request) => {
         const { email } = request.body
 
-        const client = validationClientModel(email)
+        const client = await validationClientModel(email)
 
         return { client }
     })

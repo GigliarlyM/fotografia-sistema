@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
-import { createPhotoModel } from "../model/crud-service";
+import { createPhotoModel } from "../model/service";
 
 export default async function createPhoto(app: FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().post('/photo/:cpfPhotographer', {

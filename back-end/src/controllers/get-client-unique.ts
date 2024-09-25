@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
-import { readClientModelUnique } from "../model/crud-client";
+import { readClientModelUnique } from "../model/client";
 
 
 export default async function getClientUnique(app: FastifyInstance) {
@@ -15,7 +15,7 @@ export default async function getClientUnique(app: FastifyInstance) {
     }, async (request) => {
         const { cpfClient } = request.params
 
-        const client = readClientModelUnique(cpfClient)
+        const client = await readClientModelUnique(cpfClient)
 
         return { client }
     })

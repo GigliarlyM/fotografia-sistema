@@ -3,6 +3,8 @@ import fastify from "fastify";
 import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 import { env } from "./env";
 
+import "./config/db"
+
 import createClient from "./controllers/create-client";
 import createPhoto from "./controllers/create-photo";
 import createPhotographer from "./controllers/create-photographer";

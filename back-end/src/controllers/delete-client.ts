@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
-import { deleteClientModel } from "../model/crud-client";
+import { deleteClientModel } from "../model/client";
 
 export default async function deleteClient(app: FastifyInstance) {
     //@Todo: mudar o IdPppher
@@ -14,7 +14,7 @@ export default async function deleteClient(app: FastifyInstance) {
     }, async (request) => {
         const { cpfClient } = request.params
 
-        deleteClientModel(cpfClient)
+        await deleteClientModel(cpfClient)
 
         return { status: 200 }
     })

@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
-import { readPhotographerModelUnique } from "../model/crud-photographer";
+import { readPhotographerModelUnique } from "../model/photographer";
 
 
 export default async function getPhotographer(app: FastifyInstance) {

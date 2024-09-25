@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
-import { createClientModel } from "../model/crud-client";
+import { createClientModel } from "../model/client";
 
 export default async function createClient (app: FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().post('/client', {
@@ -16,8 +16,8 @@ export default async function createClient (app: FastifyInstance) {
     }, async (request) => {
         const newClient = request.body
 
-        const position = createClientModel(newClient)
+        const client = await createClientModel(newClient)
 
-        return { position }
+        return { client }
     })
 }

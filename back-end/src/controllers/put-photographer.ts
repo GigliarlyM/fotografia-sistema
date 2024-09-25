@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
-import { updatePhotographerModel } from "../model/crud-photographer";
+import { updatePhotographerModel } from "../model/photographer";
 
 export default async function putPhotographer(app: FastifyInstance) {
     //@Todo: mudar o IdPppher

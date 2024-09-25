@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
-import { aplyPromoModel } from "../model/crud-service";
+import { aplyPromoModel } from "../model/service";
 
 export default async function postPromoPhoto(app: FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().post('/photo/:cpfPhotographer/:idPhoto', {
