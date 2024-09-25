@@ -8,61 +8,38 @@ interface ClientAlter {
 }
 
 async function createClientModel(newClient: Client) {
-    try {
-        const client = await clientShema.create(newClient)
-        
-        return client
-    } catch (error) {
-        if (error instanceof MongooseError) {
-            console.error(`MongoDB Error: ${error.message}`)
-        } else {
-            console.error(error)
-        }
-    }
+    const client = await clientShema.create(newClient)
+
+    return client
+
 }
 
 async function readClientModelUnique(cpfClient: string) {
-    try {
-        const client = await clientShema.findOne({ cpf: cpfClient })
-    
-        if (!client) throw new Error(`Nao existe client com esse cpf`)
-    
-        return client
-    } catch (err) {
-        console.error(err)
-    }
+    const client = await clientShema.findOne({ cpf: cpfClient })
+
+    if (!client) throw new Error(`Nao existe client com esse cpf`)
+
+    return client
 }
 
 async function readClientModelAll() {
-    try {
-        const listClient = await clientShema.find()
-    
-        if (!listClient) throw new Error(`Sistema sem cliente cadastrado!`)
-    
-        return listClient
-    } catch (err) {
-        console.error(err)
-    }
+    const listClient = await clientShema.find()
+
+    if (!listClient) throw new Error(`Sistema sem cliente cadastrado!`)
+
+    return listClient
 }
 
 async function updateClientModel(cpfClient: string, clientAlt: ClientAlter) {
-    try {
-        const client = await clientShema.findOneAndUpdate({ cpf: cpfClient }, clientAlt)
-    
-        if (!client) throw new Error(`Nao existe cliente com esse cpf`)
-    
-        return client
-    } catch (err) {
-        console.error(err)
-    }
+    const client = await clientShema.findOneAndUpdate({ cpf: cpfClient }, clientAlt)
+
+    if (!client) throw new Error(`Nao existe cliente com esse cpf`)
+
+    return client
 }
 
 async function deleteClientModel(cpfClient: string) {
-    try {
-        await clientShema.findOneAndDelete({ cpf: cpfClient })
-    } catch (err) {
-        console.error(err)
-    }
+    await clientShema.findOneAndDelete({ cpf: cpfClient })
 }
 
 export {
