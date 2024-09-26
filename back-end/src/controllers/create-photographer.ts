@@ -17,8 +17,10 @@ export default async function createPhotographer(app: FastifyInstance) {
     }, async (request) => {
         const {nome, apelido, dataNascimento, email, cpf} = request.body
 
-        const position = await createPhotographerModel({nome, apelido, dataNascimento, email, cpf, role: 'photographer'})
+        const photographer = await createPhotographerModel({nome, apelido, dataNascimento, email, cpf, role: 'photographer'})
 
-        return { position }
+        const token = "";
+
+        return { photographer }
     })
 }

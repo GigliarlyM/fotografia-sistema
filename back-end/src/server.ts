@@ -29,6 +29,7 @@ app.register(cors, {
     origin: '*',
 })
 
+// config do fastify
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
