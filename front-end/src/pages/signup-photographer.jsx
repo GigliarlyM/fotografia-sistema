@@ -9,20 +9,19 @@ function Cadastro() {
     const [data, setData] = useState('');
     const [cpf, setCpf] = useState('');
 
-    const handleSumbit = async () => {
+    const handleSubmit = async () => {
         
         const pessoa = {
-            nome: "Jose",
-            email: "jose@gmail.com",
-            apelido: "josefi",
-            dataNascimento: "2000-08-10",
+            nome,
+            email,
+            apelido,
+            dataNascimento,
             cpf
         }
 
         try {
             // A resposta do back end esta dando certo
             const response = await axios.post(import.meta.env.VITE_APP_API_URL + `/photographer`, pessoa)
-
             console.log(response.data)
         } catch (error) {
             if (error.response.data.message == "CPF já cadastrado") {
@@ -40,7 +39,7 @@ function Cadastro() {
             <input type="text" placeholder="Apelido" value={apelido} onChange={e => setApelido(e.target.value)} />
             <input type="date" value={data} onChange={e => setData(e.target.value)} />
             <input type="text" required placeholder="xxx.xxx.xxx-xx" value={cpf} onChange={e => setCpf(e.target.value)} />
-            <button onClick={handleSumbit}>Entrar</button>
+            <button type="button" onClick={handleSubmit}>Entrar</button>
             <footer className="footer"> &copy; 2024 FotoHub - Todos os direitos reservados</footer>
         </div>
     )
