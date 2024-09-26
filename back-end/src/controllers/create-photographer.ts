@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import { createPhotographerModel } from "../model/photographer";
+import generateToken from "./token/generate-token";
 
 export default async function createPhotographer(app: FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().post('/photographer', {
@@ -19,8 +20,8 @@ export default async function createPhotographer(app: FastifyInstance) {
 
         const photographer = await createPhotographerModel({nome, apelido, dataNascimento, email, cpf, role: 'photographer'})
 
-        const token = "";
+        const token = generateToken(photographer);
 
-        return { photographer }
+        return { photographer, token }
     })
 }

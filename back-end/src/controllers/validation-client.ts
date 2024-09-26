@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import { validationClientModel } from "../model/credencial-validation";
+import generateToken from "./token/generate-token";
 
 export default async function validationClient(app: FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().post('/client/validation', {
@@ -15,6 +16,8 @@ export default async function validationClient(app: FastifyInstance) {
 
         const client = await validationClientModel(email)
 
-        return { client }
+        const token = generateToken(client)
+
+        return { client, token }
     })
 }

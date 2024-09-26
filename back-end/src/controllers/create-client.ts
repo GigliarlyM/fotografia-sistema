@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import { createClientModel } from "../model/client";
+import generateToken from "./token/generate-token";
 
 export default async function createClient (app: FastifyInstance) {
     app.withTypeProvider<ZodTypeProvider>().post('/client', {
@@ -18,6 +19,8 @@ export default async function createClient (app: FastifyInstance) {
 
         const client = await createClientModel(newClient)
 
-        return { client }
+        const token = generateToken(client)
+
+        return { client, token }
     })
 }

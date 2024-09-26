@@ -2,6 +2,7 @@ import cors from "@fastify/cors";
 import fastify from "fastify";
 import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 import { env } from "./env";
+import jwt from "@fastify/jwt"
 
 import "./config/db"
 
@@ -32,6 +33,10 @@ app.register(cors, {
 // config do fastify
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
+
+app.register(jwt, {
+    secret: env.SECRET
+})
 
 // middleware
 app.addHook('onRequest', accessControllMiddleware)

@@ -7,13 +7,13 @@ export default function accessControllMiddleware(
 ) {
     const {url, method} = request
     const publicRoutes = [
-        {method: "POST", url: /^\/photographer(\/\d+)?$/},
-        {method: "POST", url: /^\/client(\/\d+)?$/},
+        {method: "POST", url: ["/photographer", "/photographer/validation"]},
+        {method: "POST", url: ["/client", "/client/validation"]},
     ]
     const authorizationHeader = request.headers.authorization
 
     const isPublicRoute = publicRoutes.some(
-        (route) => route.url.test(url) && route.method === method
+        (route) => route.url.includes(url) && route.method === method
     )
 
     if (isPublicRoute || authorizationHeader) {
