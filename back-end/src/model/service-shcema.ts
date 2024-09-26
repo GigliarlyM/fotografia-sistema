@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { string } from "zod";
 
 const service = new mongoose.Schema({
     id: {
@@ -21,7 +22,7 @@ const service = new mongoose.Schema({
         default: 0
     },
     photographerCpf: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: string,
         ref: 'Photographer',
         required: true
     }

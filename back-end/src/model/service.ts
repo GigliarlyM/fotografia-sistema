@@ -1,4 +1,4 @@
-import { Photo, readDataModel, writeDataModel } from "./interface-data"
+import { Photo } from "./interface-data"
 import { getPhotographerUnique } from "./photographer"
 import photographerShcema from "./photographer-shcema"
 import serviceShcema from "./service-shcema"
@@ -9,7 +9,19 @@ interface PhotoSimple {
     photographerCpf: string
 }
 
-async function createPhotoModel(photo: PhotoSimple) {
+async function createPhotoModel(photoSimple: PhotoSimple) {
+    const serviceList = await serviceShcema.find()
+
+    const lastId: number = serviceList[serviceList.length - 1].id || 1
+
+    const photo: Photo = {
+        id: lastId,
+        url: photoSimple.url,
+        price: photoSimple.price,
+        cpfPhotographer: photoSimple.photographerCpf,
+        promo: 0
+    }
+
     const service = await serviceShcema.create(photo)
 
     return service
@@ -35,37 +47,22 @@ async function getPhotoAllModel() {
         }
 
     })
+
+    return listPhotosResult
 }
 
-function deletePhotoModel(idPhoto: number, cpfPhotographer: string) {
-    const listAll = readDataModel()
-    const index = listAll.photos
-        .filter(photo => photo.cpfPhotographer == cpfPhotographer)
-        .findIndex(element => element.id === idPhoto)
-
-    if (index == -1) throw new Error("Foto não encontrada");
-
-    listAll.photos.splice(index, 1)
-
-    writeDataModel(listAll)
+async function deletePhotoModel(idPhoto: number, cpfPhotographer: string) {
+    return await serviceShcema.findOneAndDelete({ id: idPhoto, photographerCpf: cpfPhotographer })
 }
 
-function aplyPromoModel(idPhoto: number, cpfPhotographer: string, priceAlt: number) {
-    const listAll = readDataModel()
-    const photoPosition = listAll.photos.findIndex(element => element.id === idPhoto)
+async function aplyPromoModel(idPhoto: number, cpfPhotographer: string, priceAlt: number) {
+    const photo = await serviceShcema.findOne({photographerCpf: cpfPhotographer, id: idPhoto})
+    
+    if (!photo) throw new Error("Foto não encontrada")
+    
+    const promoPhoto = (photo.price - priceAlt) / photo.price
 
-    if (photoPosition == -1)
-        throw new Error(`Foto não encontrada`);
-
-    const photo = listAll.photos[photoPosition]
-    const decimalPrice = (photo.price - priceAlt) / photo.price
-
-    photo.promo = decimalPrice // A promo eh guardada em porcentagem (decimal)
-    listAll.photos[photoPosition] = photo
-
-    writeDataModel(listAll)
-
-    return decimalPrice
+    return await serviceShcema.findOneAndUpdate({photographerCpf: cpfPhotographer, id: idPhoto}, { promo: promoPhoto})
 }
 
 export {
