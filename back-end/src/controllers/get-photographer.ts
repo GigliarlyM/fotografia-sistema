@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
-import { readPhotographerModelUnique } from "../model/photographer";
+import { getPhotographerUnique } from "../model/photographer";
 
 
 export default async function getPhotographer(app: FastifyInstance) {
@@ -15,7 +15,7 @@ export default async function getPhotographer(app: FastifyInstance) {
     }, async (request) => {
         const { cpfPhotographer } = request.params
 
-        const photographer = await readPhotographerModelUnique(cpfPhotographer)
+        const photographer = await getPhotographerUnique(cpfPhotographer)
 
         return { photographer }
     })
