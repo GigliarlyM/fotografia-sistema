@@ -137,3 +137,11 @@ button:active {
   margin-top: 10px;
   margin-left: 10px;
 }
+
+.Loading{
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-right: 95px;
+}

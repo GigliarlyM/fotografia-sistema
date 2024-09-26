@@ -59,7 +59,7 @@ function GetPhoto() {
     }
 
     if (isLoading) {
-        return <div>Carregando fotos</div>
+        return <div className="Loading">Carregando fotos</div>
     }
 
     return (
