@@ -22,7 +22,7 @@ const service = new mongoose.Schema({
         default: 0
     },
     photographerCpf: {
-        type: string,
+        type: String,
         ref: 'Photographer',
         required: true
     }

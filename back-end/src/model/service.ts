@@ -1,5 +1,4 @@
 import { Photo } from "./interface-data"
-import { getPhotographerUnique } from "./photographer"
 import photographerShcema from "./photographer-shcema"
 import serviceShcema from "./service-shcema"
 

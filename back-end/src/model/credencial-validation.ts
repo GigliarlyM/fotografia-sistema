@@ -1,21 +1,20 @@
-import { readDataModel } from "./interface-data"
+import clientShema from "./client-shema"
+import photographerShcema from "./photographer-shcema"
 
-function validationPhotographerModel(email: string) {
-    const listPhotographers = readDataModel().photographers
-    const photographer = listPhotographers.find(element => element.email == email)
+async function validationPhotographerModel(email: string) {
+    const photographer = await photographerShcema.findOne({email: email})
 
-    if (photographer == undefined) throw new Error(`Invalid Photographer`);
+    if (!photographer) throw new Error(`Nao existe photographer com esse email`)
 
-    return photographer;
+    return photographer
 }
 
-function validationClientModel(email: string) {
-    const listPhotographers = readDataModel().clients
-    const client = listPhotographers.find(element => element.email == email)
+async function validationClientModel(email: string) {
+    const client = await clientShema.findOne({email: email})
 
-    if (client == undefined) throw new Error(`Invalid Client`);
+    if (!client) throw new Error(`Nao existe cliente com esse email`)
 
-    return client;
+    return client
 }
 
 export {
