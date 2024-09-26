@@ -9,6 +9,7 @@ export default function accessControllMiddleware(
     const publicRoutes = [
         {method: "POST", url: ["/photographer", "/photographer/validation"]},
         {method: "POST", url: ["/client", "/client/validation"]},
+        {method: "GET", url: ["/photo"]},
     ]
     const authorizationHeader = request.headers.authorization
 

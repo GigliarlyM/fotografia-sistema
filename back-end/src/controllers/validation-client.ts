@@ -16,7 +16,12 @@ export default async function validationClient(app: FastifyInstance) {
 
         const client = await validationClientModel(email)
 
-        const token = generateToken(client)
+        const token = await generateToken({
+            nome: client.nome,
+            email: client.email,
+            cpf: client.cpf,
+            apelido: client.apelido
+        })
 
         return { client, token }
     })

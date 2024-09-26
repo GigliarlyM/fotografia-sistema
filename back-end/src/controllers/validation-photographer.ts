@@ -14,9 +14,16 @@ export default async function validationPhotographer(app: FastifyInstance) {
     }, async (request) => {
         const { email } = request.body
 
-        const photographer = validationPhotographerModel(email)
+        const photographer = await validationPhotographerModel(email)
 
-        const token = generateToken(photographer)
+        const photographerObject = {
+            cpf: photographer.cpf,
+            nome: photographer.nome,
+            apelido: photographer.apelido,
+            email: photographer.email
+        }
+
+        const token = await generateToken(photographerObject)
 
         return { photographer, token }
     })

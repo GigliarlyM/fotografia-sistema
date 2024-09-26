@@ -14,7 +14,7 @@ export default async function deletePhoto(app: FastifyInstance) {
     }, async (request) => {
         const { idPhoto, cpfPhotographer } = request.params
 
-        const photos = deletePhotoModel(idPhoto, cpfPhotographer)
+        const photos = await deletePhotoModel(idPhoto, cpfPhotographer)
 
         return { photos }
     })

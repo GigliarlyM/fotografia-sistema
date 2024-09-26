@@ -19,7 +19,7 @@ export default async function createClient (app: FastifyInstance) {
 
         const client = await createClientModel(newClient)
 
-        const token = generateToken(client)
+        const token = await generateToken(newClient)
 
         return { client, token }
     })

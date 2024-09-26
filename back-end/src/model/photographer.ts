@@ -1,5 +1,5 @@
 import { Employee } from './interface-data';
-import photographerShcema from './photographer-shcema';
+import photographerShcema from './photographer-schema';
 
 interface EmployeeAlter {
     apelido: string,

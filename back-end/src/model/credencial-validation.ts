@@ -1,5 +1,5 @@
-import clientShema from "./client-shema"
-import photographerShcema from "./photographer-shcema"
+import clientShema from "./client-schema"
+import photographerShcema from "./photographer-schema"
 
 async function validationPhotographerModel(email: string) {
     const photographer = await photographerShcema.findOne({email: email})

@@ -19,7 +19,7 @@ export default async function postPromoPhoto(app: FastifyInstance) {
         const { priceAlt } = request.body;
 
         // @TODO: fazer um sistema para verificar cpf antes de aplicar a promo
-        const decimalPromo = aplyPromoModel(idPhoto, cpfPhotographer, priceAlt)
+        const decimalPromo = await aplyPromoModel(idPhoto, cpfPhotographer, priceAlt)
         
         return { decimalPromo }
     })

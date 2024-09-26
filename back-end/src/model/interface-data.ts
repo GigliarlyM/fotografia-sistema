@@ -8,7 +8,7 @@ interface Client extends Object {
 interface Photo extends Object {
     id: number,
     url: string,
-    cpfPhotographer: string,
+    photographerCpf: string,
     price: number,
     promo: number // Valor em Decimal que sera aplicado em price
 }

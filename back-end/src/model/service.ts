@@ -1,6 +1,6 @@
 import { Photo } from "./interface-data"
-import photographerShcema from "./photographer-shcema"
-import serviceShcema from "./service-shcema"
+import photographerShcema from "./photographer-schema"
+import serviceShcema from "./service-schema"
 
 interface PhotoSimple {
     url: string,
@@ -10,20 +10,25 @@ interface PhotoSimple {
 
 async function createPhotoModel(photoSimple: PhotoSimple) {
     const serviceList = await serviceShcema.find()
+    let lastId: number
 
-    const lastId: number = serviceList[serviceList.length - 1].id || 1
+    if (serviceList.length > 0) {
+        lastId = serviceList[serviceList.length - 1].id + 1
+    } else {
+        lastId = 1
+    }
 
     const photo: Photo = {
         id: lastId,
         url: photoSimple.url,
         price: photoSimple.price,
-        cpfPhotographer: photoSimple.photographerCpf,
+        photographerCpf: photoSimple.photographerCpf,
         promo: 0
     }
 
     const service = await serviceShcema.create(photo)
 
-    return service
+    return { service }
 }
 
 async function getPhotoModel(cpfPhotographer: string) {

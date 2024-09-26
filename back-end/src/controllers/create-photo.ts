@@ -18,8 +18,13 @@ export default async function createPhoto(app: FastifyInstance) {
         const { url, price } = request.body
         const { photographerCpf } = request.params
 
-        const position = await createPhotoModel({url, price, photographerCpf})
+        try {
+            const photo = await createPhotoModel({ url, price, photographerCpf })
+            return { photo }
+        } catch (err) {
+            console.error(err)
+            return {}
+        }
 
-        return { position }
     })
 }

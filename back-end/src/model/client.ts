@@ -1,5 +1,5 @@
 import { MongooseError } from 'mongoose';
-import clientShema from './client-shema';
+import clientShema from './client-schema';
 import { Client } from './interface-data';
 
 interface ClientAlter {
