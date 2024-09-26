@@ -19,7 +19,7 @@ export default function PerfilPhotographer() {
             setIsLoanding(true)
             try {
                 if (cpfPhotographer) {
-                    const response = await axios.get(import.meta.env.VITE_APP_API_URL + `/photographer/${cpfPhotographer}`)
+                    const response = await axios.get(import.meta.env.VITE_APP_API_URL + `/photographer/${cpfPhotographer}`, {auth: "jojojojojo"})
 
                     setPhotographer(response.data.photographer)
                 } else {

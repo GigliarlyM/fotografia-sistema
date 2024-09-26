@@ -8,17 +8,19 @@ export default function LoginPhotographer() {
     const [email, setEmail] = useState('')
     const [valid, setValid] = useState(false)
     const navigate = useNavigate()
-    const pathApi = 'http://localhost:8080/photographer/validation'
+    const pathApi = import.meta.env.VITE_APP_API_URL + '/photographer/validation'
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         try {
             const reponse = await axios.post(pathApi, { apelido, email })
+            console.log (reponse)
 
             if (reponse.data.photographer) {
                 setValid(true)
                 sessionStorage.setItem('cpf_id', reponse.data.photographer.cpf)
+                sessionStorage.setItem('auth_token', reponse.data.token)
             }
         } catch (error) {
             console.error(error)
@@ -32,7 +34,7 @@ export default function LoginPhotographer() {
     return (
         <div className="form">
             <div>
-                <button onClick={() => navigate("login/photographer")}>Voltar para a Home</button>
+                <button onClick={() => navigate("/")}>Voltar para a Home</button>
             </div>
             <h1>Login Fotográfo</h1>
             <input type="text" required placeholder="Apelido" value={apelido} onChange={e => setApelido(e.target.value)} />

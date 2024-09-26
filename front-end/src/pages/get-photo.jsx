@@ -86,7 +86,7 @@ function GetPhoto() {
     )
 }
 
-function Photo({ url, price, className, promo }) {
+function Photo({ url, price, className = "", promo = 0 }) {
     return (
         <div className={className}>
             <img src={url} width={200} />
