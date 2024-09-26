@@ -21,6 +21,7 @@ import putClient from "./controllers/put-client";
 import putPhotographer from "./controllers/put-photographer";
 import validationClient from "./controllers/validation-client";
 import validationPhotographer from "./controllers/validation-photographer";
+import accessControllMiddleware from "./middleware/access-control-middleware";
 
 const app = fastify()
 
@@ -30,6 +31,9 @@ app.register(cors, {
 
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
+
+// middleware
+app.addHook('onRequest', accessControllMiddleware)
 
 // Crud do fotografo
 app.register(createPhotographer)
