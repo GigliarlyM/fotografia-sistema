@@ -20,6 +20,10 @@ export default function CadastroGeral() {
         setActiveForm(form);
     };
 
+    const getToken = () => {
+        return sessionStorage.getItem('token');
+    }
+
     const handleClienteSubmit = async (e) => {
         
         const cliente = {
@@ -29,6 +33,7 @@ export default function CadastroGeral() {
         }
 
         try {
+            const token = getToken();
             const response = await axios.post(import.meta.env.VITE_APP_API_URL + `/cliente`, cliente)
             console.log("Cliente cadastrado " + response.data)
         } catch (error) {
@@ -52,7 +57,8 @@ export default function CadastroGeral() {
         }
 
         try {
-            const response = await axios.post(import.meta.env.VITE_APP_API_URL + `/photographer`, cliente)
+            const token = getToken();
+            const response = await axios.post(import.meta.env.VITE_APP_API_URL + `/photographer`, fotografo)
             console.log("Fotográfo cadastrado " + response.data)
         } catch (error) {
             if (error.response.data.message == "CPF já cadastrado") {
@@ -85,8 +91,6 @@ export default function CadastroGeral() {
                     Fotógrafo
                 </button>
             </div>
-
-
 
             {activeForm === 'cliente' && (
                 <div id="clienteForm" className="form-container active">
