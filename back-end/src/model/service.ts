@@ -40,19 +40,7 @@ async function getPhotoAllModel() {
 
     if (listPhotos.length === 0) throw new Error("Sem fotos no Sistema")
 
-    const listPhotosResult = listPhotos.map(async photo => {
-        const photographer = await photographerShcema.findOne({cpf: photo.photographerCpf}) || {cpf: ""}
-
-        return {
-            url: photo.url,
-            price: photo.price,
-            promo: photo.photographerCpf,
-            photographercpf: photographer.cpf
-        }
-
-    })
-
-    return listPhotosResult
+    return listPhotos
 }
 
 async function deletePhotoModel(idPhoto: number, cpfPhotographer: string) {
