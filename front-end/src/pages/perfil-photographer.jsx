@@ -13,13 +13,14 @@ export default function PerfilPhotographer() {
         email: '',
         cpf: ''
     })
+    const token = sessionStorage.getItem('auth_token')
 
     useEffect(() => {
         const fetchPhotographerInfo = async () => {
             setIsLoanding(true)
             try {
                 if (cpfPhotographer) {
-                    const response = await axios.get(import.meta.env.VITE_APP_API_URL + `/photographer/${cpfPhotographer}`, {auth: "jojojojojo"})
+                    const response = await axios.get(import.meta.env.VITE_APP_API_URL + `/photographer/${cpfPhotographer}`, {auth: token})
 
                     setPhotographer(response.data.photographer)
                 } else {

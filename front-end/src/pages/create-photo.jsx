@@ -6,11 +6,12 @@ export default function CreatePhoto() {
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState(0)
     const [link, setLink] = useState('')
-    const pathApi = "http://localhost:8080/photo"
+    const pathApi = import.meta.env.VITE_APP_API_URL + "/photo"
+    const token = sessionStorage.getItem('auth_token')
     
     const handleSubmit = async () => {
         try {
-            const response = await axios.post(pathApi + `/${cpfPhotographer}`, { price, url: link })
+            const response = await axios.post(pathApi + `/${cpfPhotographer}`, { price, url: link }, {auth: token})
             console.log(response)
         } catch (error) {
             console.error(error)

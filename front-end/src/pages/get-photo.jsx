@@ -13,12 +13,13 @@ function GetPhoto() {
     const [isModelOpen, setIsModelOpen] = useState(false)
     const [idPhoto, setIdPhoto] = useState(0)
     const uriApi = import.meta.env.VITE_APP_API_URL + `/photo/${cpfPhotographer}`
+    const token = sessionStorage.getItem('auth_token')
 
     useEffect(() => {
         const fetchData = async () => {
             setIsLoanding(true)
             try {
-                const response = await axios.get(uriApi)
+                const response = await axios.get(uriApi, { auth: token })
 
                 setPhotos(response.data.photos)
             } catch (error) {
@@ -38,7 +39,7 @@ function GetPhoto() {
 
     const handleFormSubmit = async (newPrice, id) => {
         try {
-            const response = await axios.post(uriApi + `/${id}`, { priceAlt: newPrice })
+            const response = await axios.post(uriApi + `/${id}`, { priceAlt: newPrice }, { auth: token })
 
             console.log(response);
         } catch (error) {
@@ -50,8 +51,8 @@ function GetPhoto() {
 
     const handleDeletePhoto = async (id) => {
         try {
-            const response = await axios.delete(uriApi + `/${id}`)
-            console.log(response);
+            const response = await axios.delete(uriApi + `/${id}`, { auth: token })
+
             setPhotos(photos.filter(photo => photo.id !== id))
         } catch (error) {
             console.error(error);
@@ -93,7 +94,7 @@ function Photo({ url, price, className = "", promo = 0 }) {
             {promo ?
                 <p>R$ {price - (price * promo)} com - {promo * 100}%</p> :
                 <p>R$ {price}</p>}
-                
+
         </div>
     )
 }
